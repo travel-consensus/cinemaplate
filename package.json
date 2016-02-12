@@ -1,8 +1,8 @@
 {
-  "name": "MyApp",
-  "version": "1.0.0",
+  "name": "CinemaPlate",
+  "version": "0.0.1",
   "main": "server/index.js",
-  "description": "A rapid project starter for Node, Express and Angular.",
+  "description": "A site for movie and dinner indecision paralysis.",
   "engines": {
     "node": ">=0.10.0"
   },
@@ -18,14 +18,13 @@
     "supertest": "^1.1.0",
     "supertest-as-promised": "^2.0.2"
   },
-  "author": "Dan <dan.corman@gmail.com>",
   "license": "MIT",
   "scripts": {
     "start": "./node_modules/.bin/nodemon server/index.js --ignore client/ --ignore node_modules/",
     "test": "./test/run.sh"
   },
   "bugs": {
-    "url": "https://github.com/dyale/node-catapult-angular/issues"
+    "url": "https://github.com/nodedoubt/cinemaplate/issues"
   },
-  "homepage": "https://github.com/dyale/node-catapult-angular/"
+  "homepage": "http://cinemaplate.herokuapp.com"
 }
