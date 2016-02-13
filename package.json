@@ -3,6 +3,9 @@
   "version": "0.0.1",
   "description": "End dinner and a move indecision paralysis.",
   "main": "server/index.js",
+  "engines": {
+    "node": "5.1"
+  },
   "scripts": {
     "start": "nodemon server/ --ignore client/",
     "test": "./test/run.sh"
