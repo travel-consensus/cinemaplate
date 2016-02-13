@@ -1,0 +1,20 @@
+# humanstxt.org/
+# The humans responsible & technology colophon
+
+# TEAM
+
+    Austin Kovach -- Development
+    Carly Levy -- Product Manager
+    Joseph Pena -- Development
+    Justin Seiter -- Scrum Master
+    TJ Martin -- Development
+
+# THANKS
+
+    Gilbert for node-catapult and Forbes Lindesay for browserify-middleware! Both available on Github.
+
+# TECHNOLOGY COLOPHON
+
+    SCSS, HTML5, Normalize.css, Skeleton
+    PostgreSQL, Express, Angular, Node
+    Travis CI, Supertest
