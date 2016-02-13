@@ -1,10 +1,10 @@
 {
   "name": "CinemaPlate",
   "version": "0.0.1",
-  "description": "End dinner and a move indecision paralysis.",
+  "description": "End dinner and a movie indecision paralysis.",
   "main": "server/index.js",
   "engines": {
-    "node": "5.1"
+    "node": "5.6"
   },
   "scripts": {
     "start": "nodemon server/ --ignore client/",
