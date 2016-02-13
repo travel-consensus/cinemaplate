@@ -1,24 +1,8 @@
-'use strict';
+// Require Angular just like we do in Node!
+var angular = require('angular');
 
-angular.module('myApp', [
-    'ui.router'
-  ])
+// We can use MatchCtrl.js as a module. KAKOW!
+var MatchCtrl = require('./controllers/MatchCtrl.js');
 
-    .config(function($stateProvider, $urlRouterProvider) {
-    
-    $urlRouterProvider.otherwise('/');
-    
-    $stateProvider
-        .state('home', {
-            url: '/',
-            templateUrl: 'views/main.html',
-            controller: 'MainCtrl'
-        })
-
-        .state('about', {
-          url: '/about',
-          templateUrl: 'views/about.html',
-          controller: 'AboutCtrl'
-        });
-        
-});
+var app = angular.module('cinePlate', []);
+app.controller('MatchCtrl', ['$scope', MatchCtrl]);

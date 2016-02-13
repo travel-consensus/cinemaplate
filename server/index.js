@@ -1,22 +1,36 @@
-var express = require('express');
-var Path = require('path');
-var routes = express.Router();
-var cities = require('cities');
-var yelp = require('./yelp.js')
+var browserify = require('browserify-middleware')
+var express = require('express')
+var Path = require('path')
+
+var routes = express.Router()
+
 //
-//route to your index.html
+// Yelp API modules
 //
-var assetFolder = Path.resolve(__dirname, '../client/');
-routes.use(express.static(assetFolder));
+// var cities = require('cities');
+// var yelp = require('./yelpHelp')
+
+//
+// Provide a browserified file at a specified path
+//
+routes.get('/app-bundle.js',
+  browserify('./client/app.js'))
 
 //
 // Example endpoint (also tested in test/server/index_test.js)
 //
 routes.get('/api/tags-example', function(req, res) {
-  res.send(['node', 'express', 'angular'])
-});
+  res.send(['node', 'express', 'browserify', 'mithril'])
+})
 
-if(process.env.NODE_ENV !== 'test') {
+//
+// Static assets (html, etc.)
+//
+var assetFolder = Path.resolve(__dirname, '../client/public')
+routes.use(express.static(assetFolder))
+
+
+if (process.env.NODE_ENV !== 'test') {
   //
   // The Catch-all Route
   // This is for supporting browser history pushstate.
@@ -30,19 +44,20 @@ if(process.env.NODE_ENV !== 'test') {
   // We're in development or production mode;
   // create and run a real server.
   //
-  var app = express();
+  var app = express()
 
   // Parse incoming request bodies as JSON
-  app.use( require('body-parser').json() );
+  app.use( require('body-parser').json() )
 
   // Mount our main router
-  app.use('/', routes);
+  app.use('/', routes)
 
   // Start the server!
-  var port = process.env.PORT || 4000;
-  app.listen(port);
-  console.log("Listening on port", port);
-} else {
+  var port = process.env.PORT || 4000
+  app.listen(port)
+  console.log("Listening on port", port)
+}
+else {
   // We're in test mode; make this file importable instead.
-  module.exports = routes;
+  module.exports = routes
 }
