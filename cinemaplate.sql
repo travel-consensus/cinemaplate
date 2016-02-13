@@ -1,13 +1,13 @@
-CREATE TABLE "Genre" (
-  "genre_id" integer NOT NULL,
+CREATE TABLE IF NOT EXISTS "Genre" (
+  "genre_id" SERIAL NOT NULL,
   "genre_name" varchar(100) NOT NULL,
   CONSTRAINT Genre_pk PRIMARY KEY ("genre_id")
 );
 
 
 
-CREATE TABLE "Movie" (
-  "movie_id" integer NOT NULL,
+CREATE TABLE IF NOT EXISTS "Movie" (
+  "movie_id" SERIAL NOT NULL,
   "movie_title" varchar(255) NOT NULL,
   "movie_summary" TEXT NOT NULL,
   "movie_rating" DECIMAL NOT NULL,
@@ -19,8 +19,8 @@ CREATE TABLE "Movie" (
 
 
 
-CREATE TABLE "Restaurant" (
-  "restaurant_id" integer NOT NULL,
+CREATE TABLE IF NOT EXISTS "Restaurant" (
+  "restaurant_id" SERIAL NOT NULL,
   "restaurant_name" varchar(255) NOT NULL,
   "restaurant_description" TEXT NOT NULL,
   "restaurant_phone" varchar(15) NOT NULL,
@@ -35,8 +35,8 @@ CREATE TABLE "Restaurant" (
 
 
 
-CREATE TABLE "RestaurantCuisine" (
-  "restaurant_cuisine_id" integer NOT NULL,
+CREATE TABLE IF NOT EXISTS "RestaurantCuisine" (
+  "restaurant_cuisine_id" SERIAL NOT NULL,
   "fk_restaurant_id" integer NOT NULL REFERENCES Restaurant(restaurant_id) ON DELETE CASCADE,
   "fk_cuisine_id" integer NOT NULL REFERENCES Cuisine(cuisine_id) ON DELETE RESTRICT,
   CONSTRAINT RestaurantCuisine_pk PRIMARY KEY ("restaurant_cuisine_id")
@@ -44,8 +44,8 @@ CREATE TABLE "RestaurantCuisine" (
 
 
 
-CREATE TABLE "StreamingUrl" (
-  "url_id" integer NOT NULL,
+CREATE TABLE IF NOT EXISTS "StreamingUrl" (
+  "url_id" SERIAL NOT NULL,
   "url" TEXT NOT NULL,
   "fk_movie_id" integer NOT NULL,
   CONSTRAINT StreamingUrl_pk PRIMARY KEY ("url_id"),
@@ -54,15 +54,15 @@ CREATE TABLE "StreamingUrl" (
 
 
 
-CREATE TABLE "Cuisine" (
-  "cuisine_id" integer NOT NULL,
+CREATE TABLE IF NOT EXISTS "Cuisine" (
+  "cuisine_id" SERIAL NOT NULL,
   "cuisine_name" varchar(255) NOT NULL,
   CONSTRAINT Cuisine_pk PRIMARY KEY ("cuisine_id")
 );
 
 
 
-CREATE TABLE "MovieGenre" (
+CREATE TABLE IF NOT EXISTS "MovieGenre" (
   "fk_movie_id" integer NOT NULL REFERENCES Movie(movie_id) ON DELETE CASCADE,
   "fk_genre_id" integer NOT NULL REFERENCES Genre(genre_id) ON DELETE RESTRICT,
   CONSTRAINT MovieGenre_pk PRIMARY KEY (fk_movie_id, fk_genre_id)
@@ -70,7 +70,7 @@ CREATE TABLE "MovieGenre" (
 
 
 
-CREATE TABLE "CuisineGenre" (
+CREATE TABLE IF NOT EXISTS "CuisineGenre" (
   "fk_cuisine_id" integer NOT NULL,
   "fk_genre_id" integer NOT NULL,
   CONSTRAINT CuisineGenre_pk PRIMARY KEY (fk_cuisine_id, fk_genre_id),
