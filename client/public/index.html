@@ -9,15 +9,11 @@
   <script src="/app-bundle.js"></script>
 </head>
 
-<body ng-controller='MatchCtrl'>
-
-  <h1>CinemaPlate</h1>
-  <ul>
-    <li><strong>Genres</strong></li>
-    <li ng-repeat="genre in genres">
-      {{ genre.genre_name }}
-    </li>
-  </ul>
-
+<body>
+  <!--  
+      Use ngView to load in templates via controllers! Which template/controller
+      to use is determined by $routeProvider in app.js
+  -->
+  <ng-view></ng-view>
 </body>
 </html>
