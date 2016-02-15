@@ -57,6 +57,7 @@ CREATE TABLE IF NOT EXISTS "StreamingUrl" (
 CREATE TABLE IF NOT EXISTS "Cuisine" (
   "cuisine_id" SERIAL NOT NULL,
   "cuisine_name" varchar(255) NOT NULL,
+  "cuisine_yelp_category_id" varchar(255) NOT NULL UNIQUE,
   CONSTRAINT Cuisine_pk PRIMARY KEY ("cuisine_id")
 );
 
