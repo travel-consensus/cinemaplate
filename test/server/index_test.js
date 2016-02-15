@@ -15,7 +15,7 @@ describe("The Server", function() {
     // See test/test-helper.js for details of why this works.
     //
     yield request(app)
-      .get('/api/match')
+      .get('/')
       .expect(200)
   })
 })
