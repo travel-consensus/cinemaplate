@@ -16,6 +16,6 @@ describe("The Server", function() {
     //
     yield request(app)
       .get('/api/match')
-      .expect(200);
+      .expect(200)
   })
 })
