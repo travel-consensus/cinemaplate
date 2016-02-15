@@ -5,4 +5,4 @@ var angular = require('angular');
 var MatchCtrl = require('./controllers/MatchCtrl.js');
 
 var app = angular.module('cinePlate', []);
-app.controller('MatchCtrl', ['$scope', MatchCtrl]);
+app.controller('MatchCtrl', ['$scope', '$http', MatchCtrl]);
