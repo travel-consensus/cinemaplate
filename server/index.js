@@ -44,9 +44,13 @@ routes.get('/api/match', function(req, res) {
       }
       res.send(result.rows);
       pgClient.end();
-    })
-  })
-})
+    });
+  });
+});
+
+routes.get('/', function(req, res){
+  res.sendFile( assetFolder + '/index.html' );
+});
 
 //
 // Static assets (html, etc.)
@@ -63,7 +67,7 @@ if (process.env.NODE_ENV !== 'test') {
   //
   routes.get('/*', function(req, res){
     res.sendFile( assetFolder + '/index.html' );
-  })
+  });
 
   //
   // We're in development or production mode;
