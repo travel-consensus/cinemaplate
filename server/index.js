@@ -30,13 +30,15 @@ routes.get('/app-bundle.js',
 //
 // Match endpoint to match movie genres with cuisines
 //
-routes.get('/api/match', function(req, res) {
+routes.get('/api/match/:zip', function(req, res) {
+  var zip = req.params.zip;
+
   var pgClient = new pg.Client(pgConString);
   pgClient.connect(function(err){
     if (err){
       return console.error('could not connect to postgres', err);
     }
-    pgClient.query('SELECT * FROM "Genre"', function (err, result){
+    pgClient.query('SELECT * FROM "genres"', function (err, result){
       if (err){
         return console.error('error running query', err);
       }
