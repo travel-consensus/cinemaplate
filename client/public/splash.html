@@ -1,5 +1,5 @@
 <h1>CinemaPlate</h1>
-<form name="getZip">
-  <input type="text" placeholder="Enter your zip&hellip;"></input>
+<form ng-submit="getZip()">
+  <input ng-model="zip" type="text" placeholder="Enter your zip&hellip;"></input>
   <button type="submit">Search</button>
 </form>

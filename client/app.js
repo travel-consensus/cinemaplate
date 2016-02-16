@@ -17,7 +17,7 @@ app.config(['$routeProvider', function($routeProvider) {
 
   // The /match route is where the results of a zip code
   // lookup are loaded.
-  .when('/match', {
+  .when('/match/:zip', {
     templateUrl: 'matcher.html',
     controller: 'MatchCtrl'
   })
@@ -36,5 +36,5 @@ app.config(['$routeProvider', function($routeProvider) {
 
 // Add the $http dependency so we can make a call to the express
 // api routes declared in server/index.js
-app.controller('MatchCtrl', ['$scope', '$http', MatchCtrl]);
-app.controller('SplashCtrl', ['$scope', SplashCtrl]);
+app.controller('MatchCtrl', ['$scope', '$http', '$routeParams', MatchCtrl]);
+app.controller('SplashCtrl', ['$scope', '$http', '$location', SplashCtrl]);
