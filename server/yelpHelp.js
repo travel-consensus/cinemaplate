@@ -11,6 +11,8 @@ var client = Yelp.createClient({
   }
 });
 
+var yelp = module.exports;
+
 var call1 = client.search({
   actionlinks: true,
   location: "78701",
@@ -75,15 +77,21 @@ var call10 = client.search({
 yelp.getFoodList = function(){
   return Promise.all([call1, call2, call3, call4, call5, call6, call7, call8, call9, call10])
   .then(function(res){
+    var eat24 = {}
     for(var x = 0; x < 10; x++){
-      fs.appendFile('sampleYelp.json', JSON.stringify(res[x],null, 4),{});
+        //boo quadratic
+        eat24['nomnom' + x] = res[x].businesses.filter(function(y){
+            return y.eat24_url !== undefined;
+        })
     }
-    fs.appendFile('sampleYelp.json', JSON.stringify(res[5],null, 4),{});
-    console.log('made it into the promise',res[9]);
+    return eat24;
+
+  }).then(function(res){
+      //return promise back to index.js 
+      return res;
   })
   .catch(function(err){
-    console.log('actually yo, Im an error',err);
+    console.log('Error in yelp.getFoodList:', err)
   })
 }
 
-var yelp = module.exports;
