@@ -1,7 +1,7 @@
 var browserify = require('browserify-middleware');
 var express = require('express');
 var Path = require('path');
-
+var yelp = require('./yelpHelp');
 //
 // Get Postgres rolling.
 //

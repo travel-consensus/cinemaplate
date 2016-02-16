@@ -11,6 +11,8 @@ var client = Yelp.createClient({
   }
 });
 
+var yelp = module.exports;
+
 var call1 = client.search({
   actionlinks: true,
   location: "78701",
@@ -93,4 +95,3 @@ yelp.getFoodList = function(){
   })
 }
 
-var yelp = module.exports;
