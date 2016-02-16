@@ -17,11 +17,9 @@ if (process.env.NODE_ENV !== 'production') {
 
 var routes = express.Router();
 
-//
-// Yelp API modules
-//
-// var cities = require('cities');
-// var yelp = require('./yelpHelp')
+yelp.getFoodList().then(function(res){
+    console.log('made it back into the index with the promise object for sql', res)
+})
 
 //
 // Provide a browserified file at a specified path
