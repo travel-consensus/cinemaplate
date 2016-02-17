@@ -78,19 +78,19 @@ var MovieDB = {
   }
 };
 
-MovieDB.genres()
-  .then(function(response){
-    console.log('genres: ', response);
-  });
+// MovieDB.genres()
+//   .then(function(response){
+//     console.log('genres: ', response);
+//   });
 
-MovieDB.getMoviesByGenreId(28, 49)
-  .then(function(response){
-    response.results.map(function(film){
-      console.log(film)
-    })
-  });
+// MovieDB.getMoviesByGenreId(28, 49)
+//   .then(function(response){
+//     response.results.map(function(film){
+//       console.log(film)
+//     })
+//   });
   
-NetflixRoulettePromise.title('Donnie Darko')
-.then(function(response){
-  console.log(response);
-})
+// NetflixRoulettePromise.title('Donnie Darko')
+// .then(function(response){
+//   console.log(response);
+// })
