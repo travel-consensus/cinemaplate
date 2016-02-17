@@ -17,9 +17,10 @@ if (process.env.NODE_ENV !== 'production') {
 
 var routes = express.Router();
 
-yelp.getFoodList().then(function(res){
-    console.log('made it back into the index with the promise object for sql', res)
-})
+//still need to fold into routes.get
+yelp.getFoodByZip(78701).then(function(res){
+    console.log('i am the res', res); 
+});
 
 //
 // Provide a browserified file at a specified path
