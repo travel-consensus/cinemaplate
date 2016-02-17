@@ -2,7 +2,12 @@
 @import 'skeleton';
 @import 'variables';
 
-.test {
-  color: red;
+
+#logo {
+  background-color: $secondary_accent;
   width: 1000px;
+}
+
+body {
+  background-color: $primary_accent;
 }
