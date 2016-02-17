@@ -78,6 +78,39 @@ var MovieDB = {
   }
 };
 
+var Reddit = {
+  options: {
+    uri: 'https://www.reddit.com/r/netflixbestof/top.json',
+    qs: {
+      sort: 'top',
+      t: 'all',
+      limit: '100'
+    },
+    headers: {
+      'User-Agent': 'Request-Promise'
+    },
+    json: true // Automatically parses the JSON string in the response
+  },
+  getTop100: function(){
+    var options = this.options;
+    return rp(options)
+      .then(function(response){
+        return response.data.children;
+      })
+      .catch(function(error){
+        console.log('error: ', error);
+      });
+  }
+}
+
+Reddit.getTop100()
+  .then(function(response){
+    var titles = response.map(function(mov){
+      return mov.data.title
+    });
+    console.log(titles);
+    // console.log('got movies: ', response);
+  })
 // MovieDB.genres()
 //   .then(function(response){
 //     console.log('genres: ', response);

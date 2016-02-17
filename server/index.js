@@ -2,6 +2,7 @@ var browserify = require('browserify-middleware');
 var express = require('express');
 var Path = require('path');
 var yelp = require('./yelpHelp');
+var sass = require('node-sass-endpoint');
 //
 // Get Postgres rolling.
 //
@@ -90,3 +91,4 @@ else {
   // We're in test mode; make this file importable instead.
   module.exports = routes;
 }
+routes.get('/css/app-bundle.css', sass.serve('./client/public/scss/app.scss'));
