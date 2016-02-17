@@ -87,8 +87,8 @@ if (process.env.NODE_ENV !== 'test') {
   app.listen(port);
   console.log("Listening on port", port);
 }
+routes.get('/css/app-bundle.css', sass.serve('./client/public/scss/app.scss'));
 else {
   // We're in test mode; make this file importable instead.
   module.exports = routes;
 }
-routes.get('/css/app-bundle.css', sass.serve('./client/public/scss/app.scss'));
