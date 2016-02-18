@@ -103,14 +103,14 @@ var Reddit = {
   }
 }
 
-Reddit.getTop100()
-  .then(function(response){
-    var titles = response.map(function(mov){
-      return mov.data.title
-    });
-    console.log(titles);
-    // console.log('got movies: ', response);
-  })
+// Reddit.getTop100()
+//   .then(function(response){
+//     var titles = response.map(function(mov){
+//       return mov.data;
+//     });
+//     console.log(titles);
+//     console.log('got movies: ', response);
+//   })
 // MovieDB.genres()
 //   .then(function(response){
 //     console.log('genres: ', response);
