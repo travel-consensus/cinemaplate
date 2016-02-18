@@ -2,12 +2,52 @@
 @import 'skeleton';
 @import 'variables';
 
-
-#logo {
-  background-color: $secondary_accent;
-  width: 1000px;
-}
-
 body {
   background-color: $primary_accent;
 }
+
+
+
+.svg-container {
+  width: 325px;
+  margin: 0 auto;
+  padding-top: 150px;
+  padding-bottom: 25px;
+  #logo {
+    width: 100%;
+    padding-left: 5px;
+  }
+}
+
+
+#zip-form-container {
+  margin: 0 auto;  
+  width: 400px;
+
+  #zip {
+    width: 400px;
+    height: 55px;
+    text-align: center;
+    border-radius: 10px;
+
+      &:focus {
+        placeholder: '';
+      }
+  }
+
+  button.button-primary {
+    border-color: $headers_bg;
+    background-color: $body_bg;
+    margin: 0 140px;
+
+    &:hover {
+      border-color: $headers_bg;
+      background-color: $headers_bg;
+    }
+    &:focus{
+      outline:0;
+    }
+  }
+}
+
+

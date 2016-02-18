@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="377px" height="66px" viewBox="0 0 377 66" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<svg width="377px" height="66px" viewBox="0 0 510 66" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <!-- Generator: Sketch 3.5.2 (25235) - http://www.bohemiancoding.com/sketch -->
     <title>Logo</title>
     <desc>Created with Sketch.</desc>
@@ -10,7 +10,8 @@
                 <g id="plate" transform="translate(0.000000, 2.029412)" sketch:type="MSShapeGroup">
                     <path d="M35.1524522,1.22702328 C17.0185345,0.607431572 1.84947796,14.7203538 1.22892564,32.7573569 C0.608373326,50.7943599 14.7431761,65.939935 32.8081435,66.5595267 C50.8731109,67.1791184 66.0421674,53.0661962 66.6627198,35.0291931 C67.3522223,16.9921901 53.2174196,1.84661499 35.1524522,1.22702328 L35.1524522,1.22702328 Z M33.1528947,57.0591205 C20.3970972,56.6460594 10.3303596,45.9064698 10.8130114,33.170418 C11.2267129,20.4343662 21.9829531,10.3832119 34.7387507,10.8651165 C47.4945482,11.2781777 57.5612858,22.0177673 57.078634,34.753819 C56.6649325,47.4898708 45.9776426,57.4721816 33.1528947,57.0591205 L33.1528947,57.0591205 Z M30.3259342,15.5464761 C29.0848296,15.4776326 27.9126752,15.6153196 26.6715706,15.7530067 C29.1537798,14.7891973 31.8428399,14.2384491 34.6008501,14.3761362 C45.4949908,14.7203538 53.9758724,23.8076989 53.5621709,34.616132 C53.4932206,37.3698729 52.8037181,40.0547703 51.6315637,42.3954501 C51.8384145,41.2251102 51.976315,40.1236138 52.0452652,38.8844304 C52.527917,26.4237527 42.8059308,15.9595372 30.3259342,15.5464761 L30.3259342,15.5464761 Z" id="Shape"></path>
                 </g>
-                <text id="CinemaPlate" sketch:type="MSTextLayer" font-family="Proxima Nova Condensed" font-size="60.8823529" font-style="condensed" font-weight="bold">
+                <text id="CinemaPlate" sketch:type="MSTextLayer" font-family="Tahoma" font-size="60.8823529" font-style="condensed" font-weight="bold">
+                    <!-- font-family="Proxima Nova Condensed" -->
                     <tspan x="75.2046512" y="56">CinemaPlate</tspan>
                 </text>
             </g>
