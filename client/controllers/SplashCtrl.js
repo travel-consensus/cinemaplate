@@ -1,6 +1,9 @@
 'use strict';
 
 var SplashCtrl = function($scope, $http, $location) {
+
+  $scope.onlyNumbers = /^[0-9]+$/;
+
   $scope.zip = '';
   $scope.getZip = function () {
     if($scope.zip){
