@@ -87,11 +87,9 @@ routes.get('/app-bundle.js',
   browserify('./client/app.js'));
 
 routes.get('/css/app-bundle.css', sass.serve('./client/public/scss/app.scss'));
-
 //
 // Match endpoint to match movie genres with cuisines
 //
-
 routes.get('/api/match/:zip', function(req, res) {
   var zip = req.params.zip;
 

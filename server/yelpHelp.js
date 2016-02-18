@@ -105,4 +105,3 @@ yelp.getFoodByZip = function(zipcode){
     //return promise to index.js
     return getFoodList();   
 }
-
