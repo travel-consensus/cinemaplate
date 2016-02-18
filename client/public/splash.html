@@ -1,6 +1,9 @@
-<h1>CinemaPlate</h1>
-<img src="./img/cinempate-logo.svg"/>
-<form ng-submit="getZip()">
-  <input ng-model="zip" type="text" placeholder="Type your zip and hit Enter&hellip;"></input>
-  <button type="submit" class="button">Search</button>
-</form>
+<div class="svg-container">
+  <img src="./img/cinempate-logo.svg" id="logo"/>
+</div>
+<div id="zip-form-container">
+  <form ng-submit="getZip()">
+    <input ng-model="zip" type="text" placeholder="Type your zip and hit Enter&hellip;" id="zip"></input>
+    <button type="submit" class="button-primary">Search</button>
+  </form>
+</div>
