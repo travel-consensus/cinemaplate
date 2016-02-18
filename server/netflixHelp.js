@@ -78,19 +78,52 @@ var MovieDB = {
   }
 };
 
-MovieDB.genres()
-  .then(function(response){
-    console.log('genres: ', response);
-  });
+var Reddit = {
+  options: {
+    uri: 'https://www.reddit.com/r/netflixbestof/top.json',
+    qs: {
+      sort: 'top',
+      t: 'all',
+      limit: '100'
+    },
+    headers: {
+      'User-Agent': 'Request-Promise'
+    },
+    json: true // Automatically parses the JSON string in the response
+  },
+  getTop100: function(){
+    var options = this.options;
+    return rp(options)
+      .then(function(response){
+        return response.data.children;
+      })
+      .catch(function(error){
+        console.log('error: ', error);
+      });
+  }
+}
 
-MovieDB.getMoviesByGenreId(28, 49)
-  .then(function(response){
-    response.results.map(function(film){
-      console.log(film)
-    })
-  });
+// Reddit.getTop100()
+//   .then(function(response){
+//     var titles = response.map(function(mov){
+//       return mov.data;
+//     });
+//     console.log(titles);
+//     console.log('got movies: ', response);
+//   })
+// MovieDB.genres()
+//   .then(function(response){
+//     console.log('genres: ', response);
+//   });
+
+// MovieDB.getMoviesByGenreId(28, 49)
+//   .then(function(response){
+//     response.results.map(function(film){
+//       console.log(film)
+//     })
+//   });
   
-NetflixRoulettePromise.title('Donnie Darko')
-.then(function(response){
-  console.log(response);
-})
+// NetflixRoulettePromise.title('Donnie Darko')
+// .then(function(response){
+//   console.log(response);
+// })
