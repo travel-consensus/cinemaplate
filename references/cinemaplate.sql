@@ -12,7 +12,7 @@ CREATE TABLE IF NOT EXISTS "movies" (
   "movie_title" varchar(255) NOT NULL,
   "movie_summary" TEXT NOT NULL,
   "movie_rating" DECIMAL NOT NULL,
-  "movie_release_year" integer(4) NOT NULL,
+  "movie_release_year" integer NOT NULL,
   "movie_director" varchar(255) NOT NULL,
   "movie_actors" TEXT NOT NULL,
   CONSTRAINT movies_pk PRIMARY KEY ("movie_id")
@@ -23,14 +23,16 @@ CREATE TABLE IF NOT EXISTS "movies" (
 CREATE TABLE IF NOT EXISTS "restaurants" (
   "restaurant_id" SERIAL NOT NULL,
   "restaurant_name" varchar(255) NOT NULL,
-  "restaurant_description" TEXT NOT NULL,
-  "restaurant_phone" varchar(15) NOT NULL,
-  "restaurant_address" varchar NOT NULL,
-  "restaurant_hours" varchar NOT NULL,
-  "restaurant_price_range" varchar NOT NULL,
-  "restaurant_image_url" TEXT NOT NULL,
-  "restaurant_url" TEXT NOT NULL,
-  "restaurant_yelp_rating" DECIMAL NOT NULL,
+  "restaurant_description" TEXT,
+  "restaurant_phone" varchar(15),
+  "restaurant_address" varchar,
+  "restaurant_zip" varchar,
+  "restaurant_hours" varchar,
+  "restaurant_price_range" varchar,
+  "restaurant_image_url" TEXT,
+  "restaurant_url" TEXT,
+  "restaurant_yelp_rating" DECIMAL,
+  "restaurant_yelp_id" VARCHAR,
   CONSTRAINT restaurants_pk PRIMARY KEY ("restaurant_id")
 );
 
