@@ -81,19 +81,27 @@ yelp.getFoodByZip = function(zipcode){
     var getFoodList = function(){
       return Promise.all([call1, call2, call3, call4, call5, call6, call7, call8, call9, call10])
       .then(function(res){
-        //yelp API is not searchable by eat24_url - instead we have to do multiple calls, then filter for presence of 
-        //eat24_url to determine delivery restaurants
-        var eat24 = {}
-        for(var x = 0; x < 10; x++){
-            //boo quadratic
-            eat24['nomnom' + x] = res[x].businesses.filter(function(y){
-                return y.eat24_url !== undefined;
-            })
-        }
-        //should be an object with 10 properties, each containing the eat24_url results from each call
-        return eat24;
-    
-      }).then(function(res){
+       //yelp API is not searchable by eat24_url - instead we have to do multiple calls, then filter for presence of 
+       //eat24_url to determine delivery restaurants
+       var eat24 = [];
+       // var eat24 = {}
+       for(var x = 0; x < 10; x++){
+
+         var callX = res[x].businesses.filter(function(y){
+           return y.eat24_url !== undefined;
+         });
+
+         eat24 = eat24.concat(callX);
+
+           // eat24['nomnom' + x] = res[x].businesses.filter(function(y){
+           //     return y.eat24_url !== undefined;
+           // })
+       }
+       // console.log('eat24: ', eat24[0])
+       //should be an object with 10 properties, each containing the eat24_url results from each call
+       return eat24;
+   
+     }).then(function(res){
           //return promise back to index.js 
           return res;
       })
