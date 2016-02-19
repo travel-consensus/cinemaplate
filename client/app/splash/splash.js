@@ -2,7 +2,7 @@
 
 angular.module('cinePlate.splash', [])
 
-.controller('SplashCtrl', function($scope, $http, $location) {
+.controller('SplashCtrl', ['$scope', '$http', '$location', function($scope, $http, $location) {
 
   $scope.onlyNumbers = /^[0-9]+$/;
 
@@ -13,4 +13,4 @@ angular.module('cinePlate.splash', [])
       $location.path('/match/' + $scope.zip);
     }
   }
-})
+}])
