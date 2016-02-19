@@ -23,6 +23,10 @@ angular.module('cinePlate', [require('angular-route'), 'cinePlate.services', 'ci
     controller: 'MatchCtrl'
   })
 
+  .when('/500', {
+    templateUrl: 'app/error/500.html'
+  })
+
   // Load up the splash page so user can enter their zip.
   .when('/', {
     templateUrl: 'app/splash/splash.html',
