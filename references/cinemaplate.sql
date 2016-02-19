@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS "restaurants" (
   "restaurant_image_url" TEXT,
   "restaurant_url" TEXT,
   "restaurant_yelp_rating" DECIMAL,
-  "restaurant_yelp_id" VARCHAR,
+  "restaurant_yelp_id" VARCHAR UNIQUE,
   CONSTRAINT restaurants_pk PRIMARY KEY ("restaurant_id")
 );
 
@@ -50,7 +50,7 @@ CREATE TABLE IF NOT EXISTS "cuisines" (
 CREATE TABLE IF NOT EXISTS "restaurantCuisines" (
   "restaurant_cuisine_id" SERIAL NOT NULL,
   "fk_restaurant_id" integer NOT NULL REFERENCES restaurants(restaurant_id) ON DELETE CASCADE,
-  "fk_cuisine_id" integer NOT NULL REFERENCES cuisines(cuisine_id) ON DELETE RESTRICT,
+  "fk_cuisine_yelp_category_id" varchar(255) NOT NULL REFERENCES cuisines(cuisine_yelp_category_id) ON DELETE RESTRICT,
   CONSTRAINT restaurantCuisines_pk PRIMARY KEY ("restaurant_cuisine_id")
 );
 
