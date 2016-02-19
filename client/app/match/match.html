@@ -1,10 +1,152 @@
-<h1>CinemaPlate</h1>
-<h2>{{ movie.title }}</h2>
-<span class="star" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}">★</span>
-<h2>{{ restaurant.name }}</h2>
-<span class="star" ng-repeat="star in stars" ng-class="{selected: restaurant.rating > $index}">★</span>
-<ul>
-<li ng-repeat="genre in data.genres">
-  {{ genre }}
-</li>
-</ul>
+<!-- Star Ratings -->
+<!-- <span class="star" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}">★</span>
+<span class="star" ng-repeat="star in stars" ng-class="{selected: restaurant.rating > $index}">★</span> -->
+
+<!-- CinemaPlate Logo-->
+<div class="svgMatcher">
+  <img src="./img/cinempate-logo.svg" id="logo"/>
+</div>
+
+<!-- Navigation Bar / Header -->
+<div id='container'>
+  <nav class='navigation'>
+  <ul style="float:right;list-style-type:none;">
+    <li class='info'><a href='#about'>ABOUT</a></li>
+    <li class='info'><a href='#share'>SHARE</a></li>
+  </ul>
+</nav>
+
+<div class ='topLine'></div>
+<div class=infoBar>
+
+  <div class='movieBar'>
+    <h5><strong>Kung Fu Panda 3</strong></h5>
+    <li>Animation, Action, Adventure</li>
+  </div>
+
+  <div class='foodBar'>
+    <h5><strong>Madras Pavillion</strong></h5>
+    <li>Indian</li>
+  </div>
+</div>
+
+
+
+<!-- FAILED star rating-->
+<div class='movie_choice'>
+    IMDB Rating:
+    <div class="movieRate">
+        <div class="star_1 ratings_stars"></div>
+        <div class="star_2 ratings_stars"></div>
+        <div class="star_3 ratings_stars"></div>
+        <div class="star_4 ratings_stars"></div>
+        <div class="star_5 ratings_stars"></div>
+    </div>
+</div>
+<!-- FAILED star rating-->
+<div class='food_choice'>
+  Yelp Rating:
+    <div class="foodRate">
+        <div class="star_1 ratings_stars"></div>
+        <div class="star_2 ratings_stars"></div>
+        <div class="star_3 ratings_stars"></div>
+        <div class="star_4 ratings_stars"></div>
+        <div class="star_5 ratings_stars"></div>
+    </div>
+</div>
+
+  <div class ='midLine'></div>
+
+<!-- Movie Description-->  
+<p class='movieInfo'>Continuing his "legendary adventues of awesomeness", <br>
+Po must face two hugely epic, but different threats: one <br>
+supernatural and the other a litte closer to his home.</p>
+
+<!-- Movie Cast/Crew-->
+<div class='movieDetails'style="float:left;list-style-type:none;">>
+  <li><strong>Directors: </strong> Alessandro Carloni, Jennifer Yuh</li><br>
+  <li><strong>Writers: </strong> Jonathon Aibel, Glenn Berger</li><br>
+  <li><strong>Stars: </strong> Jack Black, Bryan Cranston, Dustin Hoffman</li>
+</div>
+
+<!-- Food Description-->  
+<p class='foodInfo'>Multiple Vegetarian, Jain, Vegan options are available. We <br>
+  are specialize in South Indian, North Indian, Indian-Chinese <br>
+  fusion cuisine.
+  </p>
+
+<!-- Food Cuisine and contact info-->
+<div class='foodDetails'style="list-style-type:none;">>
+  <li><strong>Phone: </strong> (512) 719-5575</li><br>
+  <li><strong>Address: </strong> 9025 Research Blvd. Austin, TX 78758</li><br>
+  <li><strong>Serving: </strong> Indian</li> <br>
+</div>
+
+<!-- netflix and order buttons-->  
+<button type="button" class="netflix" autocapitalize="none">Add To Netflix Queue</button>
+<button type="button" class="order" autocapitalize="none">Place An Order</button>
+<img class='panda' src="./img/kfp3.jpg">
+
+<!-- Angular
+
+<div class='movieData' ng-repeat='movie in movies'>
+<ul style="list-style-type:none;">
+  <li><strong>Title</strong></li>
+  <div class="title">{{ movie.movie_title }}</div>
+
+  <li><strong>Summary</strong></li>
+  <div class="summary">{{ movie.movie_summary }}</div>
+
+  <li><strong>Rating</strong></li>
+  <div class="rating">{{ movie.movie_rating }}</div>
+
+  <li><strong>Release Year</strong></li>
+  <div class="releaseYear">{{ movie.movie_release_year }}</div>
+
+  <li><strong>Director</strong></li>
+  <div class="director">{{ movie.movie_director }}</div>
+
+  <li><strong>Actor</strong></li>
+  <div class="actors">{{ movie.movie_actors }}</div>
+</div>
+</ul> -->
+
+
+<!-- Angular
+
+<div class='yelpData' ng-repeat='restaurant in restaurants'>
+<ul style="list-style-type:none;">
+  <li><strong>Name</strong></li>
+  <div class="name">{{ restaurants.restaurants_name }}</div>
+
+  <li><strong>Description</strong></li>
+  <div class="description">{{ restaurants.restaurants_description }}</div>
+
+  <li><strong>Phone</strong></li>
+  <div class="phone">{{ restaurants.restaurants_phone }}</div>
+
+  <li><strong>Address</strong></li>
+  <div class="address">{{ restaurants.restaurants_address }}</div>
+
+  <li><strong>Zip</strong></li>
+  <div class="zip">{{ restaurants.restaurants_zip }}</div>
+
+  <li><strong>Hours</strong></li>
+  <div class="hours">{{ restaurants.restaurants_hours }}</div>
+
+  <li><strong>Price Range</strong></li>
+  <div class="priceRange">{{ restaurants.restaurants_price_range }}</div>
+
+  <li><strong>Image URL</strong></li>
+  <div class="imageURL">{{ restaurants.restaurants_image_url }}</div>
+
+  <li><strong>URL</strong></li>
+  <div class="url">{{ restaurants.restaurants_url }}</div>
+
+  <li><strong>Yelp Rating</strong></li>
+  <div class="yelpRating">{{ restaurants.restaurants_yelp_rating }}</div>
+
+  <li><strong>Yelp ID</strong></li>
+  <div class="yelpId">{{ restaurants.restaurants_yelp_id }}</div>
+</div>
+</ul> -->
