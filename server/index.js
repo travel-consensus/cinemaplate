@@ -122,7 +122,7 @@ routes.get('/api/genres', function(req, res){
 //
 // Static assets (html, etc.)
 //
-var assetFolder = Path.resolve(__dirname, '../client/');
+var assetFolder = Path.resolve(__dirname, '../client');
 routes.use(express.static(assetFolder));
 
 
@@ -133,7 +133,7 @@ if (process.env.NODE_ENV !== 'test') {
   // NOTE: Make sure this route is always LAST.
   //
   routes.get('/*', function(req, res){
-    res.sendFile( assetFolder + 'index.html' );
+    res.sendFile( assetFolder + '/index.html' );
   });
 
   //

@@ -2,7 +2,7 @@
 
 angular.module('cinePlate.services', [])
 
-.factory('Matches', ['$http', function ($http) {
+.factory('Matches', ['$http', '$location', function ($http, $location) {
 
   var generateMatch = function (zip) {
     return $http({
@@ -11,6 +11,10 @@ angular.module('cinePlate.services', [])
     })
     .then(function (resp) {
       return resp.data;
+    })
+    .catch(function (err){
+      $location.path('/500');
+      return
     });
   };
 
