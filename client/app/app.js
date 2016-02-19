@@ -1,30 +1,31 @@
 // Require Angular just like we do in Node!
 var angular = require('angular');
 
-// We can load up controllers as modules. KAKOW!
-var MatchCtrl = require('./controllers/MatchCtrl.js');
-var SplashCtrl = require('./controllers/SplashCtrl.js');
+// We can also require angular modules like npm modules. KAKOW!
+var match = require('./match/match.js');
+var splash = require('./splash/splash.js');
+var services = require('./services/services.js');
 
 // Instantiate our app instance and add ngRoute as a dependecy via
 // the 'angular-route' npm module. (ngRoute === angular-route)
-var app = angular.module('cinePlate', [require('angular-route')]);
+angular.module('cinePlate', [require('angular-route'), 'cinePlate.services', 'cinePlate.splash', 'cinePlate.match'])
 
 // Angular routing -- Express handles serving the index.html file
 // and we use Angular's $routeProvider via ngRoute to match urls
 // with templates and their corresponding controllers.
-app.config(['$routeProvider', function($routeProvider) {
+.config(['$routeProvider', function($routeProvider) {
   $routeProvider
 
   // The /match route is where the results of a zip code
   // lookup are loaded.
   .when('/match/:zip', {
-    templateUrl: './matcher.html',
+    templateUrl: 'app/match/match.html',
     controller: 'MatchCtrl'
   })
 
   // Load up the splash page so user can enter their zip.
   .when('/', {
-    templateUrl: './splash.html',
+    templateUrl: 'app/splash/splash.html',
     controller: 'SplashCtrl'
   })
   
@@ -32,9 +33,4 @@ app.config(['$routeProvider', function($routeProvider) {
   .otherwise({
     redirectTo: '/'
   });
- }]);
-
-// Add the $http dependency so we can make a call to the express
-// api routes declared in server/index.js
-app.controller('MatchCtrl', ['$scope', '$http', '$routeParams', MatchCtrl]);
-app.controller('SplashCtrl', ['$scope', '$http', '$location', SplashCtrl]);
+}])
