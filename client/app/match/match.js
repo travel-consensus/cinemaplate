@@ -2,7 +2,7 @@
 
 angular.module('cinePlate.match', [])
 
-.controller('MatchCtrl', function($scope, $http, $routeParams, Matches) {
+.controller('MatchCtrl', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams, Matches) {
 
   $scope.stars = [1, 2, 3, 4, 5];
   $scope.movie = { 
@@ -27,4 +27,4 @@ angular.module('cinePlate.match', [])
   };
   $scope.generateMatch();
 
-})
+}])
