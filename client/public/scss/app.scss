@@ -6,8 +6,6 @@ body {
   background-color: $primary_accent;
 }
 
-
-
 .svg-container {
   width: 325px;
   margin: 0 auto;
@@ -19,11 +17,9 @@ body {
   }
 }
 
-
 #zip-form-container {
   margin: 0 auto;  
   width: 400px;
-
   #zip {
     width: 400px;
     height: 55px;
@@ -39,7 +35,6 @@ body {
     border-color: $headers_bg;
     background-color: $body_bg;
     margin: 0 140px;
-
     &:hover {
       border-color: $headers_bg;
       background-color: $headers_bg;
@@ -53,4 +48,6 @@ body {
   }
 }
 
-
+.star.selected {
+  color: $secondary_accent;
+}

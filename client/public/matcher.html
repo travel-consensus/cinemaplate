@@ -1,7 +1,5 @@
 <h1>CinemaPlate</h1>
-<ul>
-  <li><strong>Genres</strong></li>
-  <li ng-repeat="genre in genres">
-    {{ genre.genre_name }}
-  </li>
-</ul>
+<h2>{{ movie.title }}</h2>
+<span class="star" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}">★</span>
+<h2>{{ restaurant.name }}</h2>
+<span class="star" ng-repeat="star in stars" ng-class="{selected: restaurant.rating > $index}">★</span>
