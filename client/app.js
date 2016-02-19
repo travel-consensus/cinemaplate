@@ -18,13 +18,13 @@ app.config(['$routeProvider', function($routeProvider) {
   // The /match route is where the results of a zip code
   // lookup are loaded.
   .when('/match/:zip', {
-    templateUrl: 'matcher.html',
+    templateUrl: './matcher.html',
     controller: 'MatchCtrl'
   })
 
   // Load up the splash page so user can enter their zip.
   .when('/', {
-    templateUrl: 'splash.html',
+    templateUrl: './splash.html',
     controller: 'SplashCtrl'
   })
   
