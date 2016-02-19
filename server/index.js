@@ -4,6 +4,7 @@ var Path = require('path');
 var pg = require('pg');
 var yelp = require('./yelpHelp');
 var sass = require('node-sass-endpoint');
+var reddit = require('./redditHelp');
 //
 // Get Postgres rolling.
 //
@@ -17,6 +18,10 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 var routes = express.Router();
+
+reddit.getMovies().then(function(res){
+    console.log('I am an array of objects, each containing a title and url',res); 
+});
 
 //still need to fold into routes.get
 yelp.getFoodByZip(78701)
