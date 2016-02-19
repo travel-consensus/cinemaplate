@@ -32,7 +32,7 @@ CREATE TABLE IF NOT EXISTS "restaurants" (
   "restaurant_image_url" TEXT,
   "restaurant_url" TEXT,
   "restaurant_yelp_rating" DECIMAL,
-  "restaurant_yelp_id" VARCHAR,
+  "restaurant_yelp_id" VARCHAR UNIQUE,
   CONSTRAINT restaurants_pk PRIMARY KEY ("restaurant_id")
 );
 
