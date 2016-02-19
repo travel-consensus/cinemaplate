@@ -3,3 +3,8 @@
 <span class="star" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}">★</span>
 <h2>{{ restaurant.name }}</h2>
 <span class="star" ng-repeat="star in stars" ng-class="{selected: restaurant.rating > $index}">★</span>
+<ul>
+<li ng-repeat="genre in data.genres">
+  {{ genre }}
+</li>
+</ul>

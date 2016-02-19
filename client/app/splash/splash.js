@@ -1,6 +1,8 @@
 'use strict';
 
-var SplashCtrl = function($scope, $http, $location) {
+angular.module('cinePlate.splash', [])
+
+.controller('SplashCtrl', function($scope, $http, $location) {
 
   $scope.onlyNumbers = /^[0-9]+$/;
 
@@ -11,6 +13,4 @@ var SplashCtrl = function($scope, $http, $location) {
       $location.path('/match/' + $scope.zip);
     }
   }
-};
-
-module.exports = SplashCtrl;
+})
