@@ -5,6 +5,7 @@ CREATE TABLE IF NOT EXISTS "genres" (
   CONSTRAINT genres_pk PRIMARY KEY ("genre_id")
 );
 
+INSERT INTO "genres" (genre_name, genre_moviedb_id) VALUES ('Action',28),('Adventure',12),('Animation',16),('Comedy',35),('Crime',80),('Documentary',99),('Drama',18),('Family',10751),('Fantasy',14),('Foreign',10769),('History',36),('Horror',27),('Music',10402),('Mystery',9648),('Romance',10749),('Science Fiction',878),('TV Movie',10770),('Thriller',53),('War',10752),('Western',37);
 
 
 CREATE TABLE IF NOT EXISTS "movies" (
@@ -27,32 +28,14 @@ CREATE TABLE IF NOT EXISTS "restaurants" (
   "restaurant_phone" varchar(15),
   "restaurant_address" varchar,
   "restaurant_zip" varchar,
-  "restaurant_hours" varchar,
-  "restaurant_price_range" varchar,
   "restaurant_image_url" TEXT,
   "restaurant_url" TEXT,
+  "restaurant_cuisines" TEXT,
   "restaurant_yelp_rating" DECIMAL,
-  "restaurant_yelp_id" VARCHAR,
+  "restaurant_yelp_id" VARCHAR UNIQUE,
   CONSTRAINT restaurants_pk PRIMARY KEY ("restaurant_id")
 );
 
-
-
-CREATE TABLE IF NOT EXISTS "cuisines" (
-  "cuisine_id" SERIAL NOT NULL,
-  "cuisine_name" varchar(255) NOT NULL,
-  "cuisine_yelp_category_id" varchar(255) NOT NULL UNIQUE,
-  CONSTRAINT cuisines_pk PRIMARY KEY ("cuisine_id")
-);
-
-
-
-CREATE TABLE IF NOT EXISTS "restaurantCuisines" (
-  "restaurant_cuisine_id" SERIAL NOT NULL,
-  "fk_restaurant_id" integer NOT NULL REFERENCES restaurants(restaurant_id) ON DELETE CASCADE,
-  "fk_cuisine_id" integer NOT NULL REFERENCES cuisines(cuisine_id) ON DELETE RESTRICT,
-  CONSTRAINT restaurantCuisines_pk PRIMARY KEY ("restaurant_cuisine_id")
-);
 
 
 
