@@ -60,7 +60,7 @@ body {
   background-color: $body_bg;
   width: 100%; 
   height: 100%; 
-  overflow-y:scroll; 
+  overflow-y: scroll;
   position: fixed; 
   left: 0px; 
   top: 0px; 
@@ -70,7 +70,7 @@ body {
   content:"";
   position: absolute;
   z-index: -1;
-  top: 100px;
+  top: 50px;
   bottom: 0px;
   left: 50%;
   border-left: 4px solid #3d3d3d;
@@ -82,17 +82,17 @@ body {
   background-color: $primary_accent;
 }
 .info {
-    float: left;
-    a {
+  float: left;
+  a {
     display: inline-block;
     color: white;
     text-align: center;
     padding: 10px 40px;
     text-decoration: none;
-        &:hover {
+    &:hover {
         background-color: #111;
-        }
     }
+  }
 }
 .infoBar {
   background-color: black;
@@ -114,6 +114,7 @@ body {
 .movieBar {
   position: absolute;
   float: left;
+  left: 90px;
   width: 50%;
 }
 .foodBar {
@@ -121,13 +122,19 @@ body {
   right: -90px;
 }
 .movieStar .fa-star{
-  position: relative; 
-  left: 65px;
-  top: 65px;
+  color: yellow;
+  margin: 0 auto;
+  position: relative;
+  left: 500px;
+  top: 90px;
 }
-
 .foodStar .fa-star{
+  color: yellow;
+  margin: 0 auto;
+  position: relative; 
   float: right;
+  top: 90px;
+  left: -90px;
 }
 .spinAnimation {
   color: white; 
@@ -148,29 +155,12 @@ body {
   }
   &:disabled {
     background-color: black;
+    .i {
+
+    }
   }
 }
 
-.movieRate {
-    border: 1px solid #CCC;
-    overflow: visible;
-    padding: 10px;
-    position: absolute;
-    top: 100px;
-    left: 500px;
-    width: 100px;
-    height: 2px;
-}
-.foodRate {
-    border: 1px solid #CCC;
-    overflow: visible;
-    padding: 10px;
-    position: absolute;
-    top: 100px;
-    right: 60px;
-    width: 100px;
-    height: 2px;
-}
 .movieInfo{
   color: white;
   padding-top: 10px;
@@ -184,22 +174,22 @@ body {
 }
 .foodInfo{
   color: white;
-  padding-left: 810px;
-  position: absolute;
-  top: 160px;
+  position: relative;
+  right: -525px;
+  top: -100px;
 }
 .foodDetails {
   color: #8c8c8c;
   font-size: 10px;
-  padding-left: 810px;
+  padding-left: 845px;
   position: absolute;
-  top: 285px;
+  top: 330px;
   line-height: 1px;
 }
 .movie_choice {
-    font: 10px verdana, sans-serif;
-    margin: 0 auto 40px auto;
-    width: 180px;
+  font: 10px verdana, sans-serif;
+  margin: 0 auto 40px auto;
+  width: 180px;
 }
 .netflix {
   background-color: #f8e71c;
@@ -217,14 +207,14 @@ body {
   border-color: black;
   position: absolute;
   top: 375px;
-  left: 800px;
+  left: 845px;
   width: 500px;
   height: 38px;
 }
 .panda {
   position: relative;
-  top: 200px;
-  left: -240px;
+  top: 100px;
+  left: 100px;
   width:500px;
   height: 330px;
   padding-bottom: 90px;
