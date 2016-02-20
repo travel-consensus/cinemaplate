@@ -4,6 +4,9 @@ var Path = require('path');
 var pg = require('pg');
 var yelp = require('./yelpHelp');
 var sass = require('node-sass-endpoint');
+var reddit = require('./redditHelp');
+var movie = require('./movieHelp');
+
 //
 // Get Postgres rolling.
 //
@@ -17,6 +20,15 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 var routes = express.Router();
+
+//returns movie array of objects - [{},{},{}]
+reddit.getMovies()
+    .then(function(res){
+        return movie.getMovieDB(res)})
+            .then(function(res1){
+                console.log('I am the response, do with me as you will',res1)
+            })
+            
 
 
 //still need to fold into routes.get
