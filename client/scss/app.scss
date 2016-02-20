@@ -5,7 +5,6 @@
 body {
   background-color: $primary_accent;
 }
-
 .svg-container {
   width: 325px;
   margin: 0 auto;
@@ -16,7 +15,6 @@ body {
     padding-left: 5px;
   }
 }
-
 #zip-form-container {
   margin: 0 auto;  
   width: 400px;
@@ -50,38 +48,38 @@ body {
   }
 }
 .svgMatcher {
+  margin: 0 auto;
   width: 325px;
+  position: absolute;
   #logo {
     width: 100%;
     padding-left: 30px;
   }
 }
 #container {
-    background-color: $body_bg;
-    width: 100%; 
-    height: 100%; 
-    position: fixed; 
-    left: 0px; 
-    top: 0px; 
-    z-index: -1;
+  background-color: $body_bg;
+  width: 100%; 
+  height: 100%; 
+  overflow-y:scroll; 
+  position: fixed; 
+  left: 0px; 
+  top: 0px; 
+  z-index: -1;
 }
 #container:after {
-    content:"";
-    position: absolute;
-    z-index: -1;
-    top: 86px;
-    bottom: 0;
-    left: 50%;
-    border-left: 4px solid #3d3d3d;
+  content:"";
+  position: absolute;
+  z-index: -1;
+  top: 100px;
+  bottom: 0px;
+  left: 50%;
+  border-left: 4px solid #3d3d3d;
 }
-
 .navigation {
-    color: white;
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: $primary_accent;
+  color: white;
+  list-style-type: none;
+  overflow: hidden;
+  background-color: $primary_accent;
 }
 .info {
     float: left;
@@ -97,30 +95,62 @@ body {
     }
 }
 .infoBar {
-    background-color: black;
+  background-color: black;
+  overflow: hidden;
+  width: 100%;
+  position: relative;
+  .header {
+    list-style-type: none;
+    color: white;
+    position: relative;
+    float: left;
+    line-height: 1px;
+    li {
+      color: #8c8c8c;
+      font-size: 13px;
+    }
+  }
 }
 .movieBar {
-    list-style-type: none;
-    color: white;
-    float: left;
-    padding-left: 90px;
-    line-height: 1px;
-      li {
-        color: #8c8c8c;
-        font-size: 13px;
-      }
+  position: absolute;
+  float: left;
+  width: 50%;
 }
 .foodBar {
-    list-style-type: none;
-    color: white;
-    position: absolute;
-    line-height: 1px;
-    padding-left: 810px;
-    li {
-        color: #8c8c8c;
-        font-size: 13px;
-    }
+  position: absolute;
+  right: -90px;
 }
+.movieStar .fa-star{
+  position: relative; 
+  left: 65px;
+  top: 65px;
+}
+
+.foodStar .fa-star{
+  float: right;
+}
+.spinAnimation {
+  color: white; 
+  position: relative; 
+  width: 65px;
+  height: 65px;
+  margin: auto;
+  text-align: center;
+  line-height: 82px; 
+  background: $primary_accent;
+  border-radius: 100%;
+  border: 4px solid #383838;
+  .i {
+    margin-top: 10px;
+  }
+  &:hover {
+    background-color: yellow;
+  }
+  &:disabled {
+    background-color: black;
+  }
+}
+
 .movieRate {
     border: 1px solid #CCC;
     overflow: visible;
@@ -143,7 +173,7 @@ body {
 }
 .movieInfo{
   color: white;
-  padding-top: 20px;
+  padding-top: 10px;
   padding-left: 90px;
 }
 .movieDetails {
@@ -156,7 +186,7 @@ body {
   color: white;
   padding-left: 810px;
   position: absolute;
-  top: 180px;
+  top: 160px;
 }
 .foodDetails {
   color: #8c8c8c;
@@ -166,34 +196,10 @@ body {
   top: 285px;
   line-height: 1px;
 }
-.ratings_stars {
-    background: url('../img/star_empty.png') no-repeat;
-    padding: 10px;
-    position: absolute;
-    top: 100px;
-    right: 60px;
-    width: 100px;
-    height: 2px;
-}
-.ratings_vote {
-    background: url('../img/star_full.png') no-repeat;
-}
-
-.ratings_over {
-    background: url('../img/star_highlight.png') no-repeat;
-}
 .movie_choice {
     font: 10px verdana, sans-serif;
     margin: 0 auto 40px auto;
     width: 180px;
-}
-.topLine {
-  background: black;
-  border: 2px solid black;
-}
-.midLine {
-  background: black;
-  border: 2px solid black;
 }
 .netflix {
   background-color: #f8e71c;
@@ -216,12 +222,12 @@ body {
   height: 38px;
 }
 .panda {
-  position: absolute;
-  padding-top: 240px;
-  padding-left: 85px;
-  top: 300px;
+  position: relative;
+  top: 200px;
+  left: -240px;
   width:500px;
   height: 330px;
+  padding-bottom: 90px;
 }
 
 .star.selected {

@@ -1,14 +1,16 @@
 <!-- Star Ratings -->
-<!-- <span class="star" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}">★</span>
-<span class="star" ng-repeat="star in stars" ng-class="{selected: restaurant.rating > $index}">★</span> -->
+<span class="movieStar" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}"><i class="fa fa-star"></i></span>
+<span class="foodStar" ng-repeat="star in stars" ng-class="{selected: restaurant.rating > $index}"><i class="fa fa-star"></i></span>
 
 <!-- CinemaPlate Logo-->
+
+<div id='container'>
 <div class="svgMatcher">
   <img src="./img/cinempate-logo.svg" id="logo"/>
 </div>
 
 <!-- Navigation Bar / Header -->
-<div id='container'>
+
   <nav class='navigation'>
   <ul style="float:right;list-style-type:none;">
     <li class='info'><a href='#about'>ABOUT</a></li>
@@ -16,15 +18,16 @@
   </ul>
 </nav>
 
-<div class ='topLine'></div>
-<div class=infoBar>
-
-  <div class='movieBar'>
+<div class='infoBar u-cf'>
+  <div class='spinAnimation'>
+  <i class='fa fa-refresh fa-3x fa-spin'></i>
+  </div>
+  <div class='header movieBar'>
     <h5><strong>Kung Fu Panda 3</strong></h5>
     <li>Animation, Action, Adventure</li>
   </div>
 
-  <div class='foodBar'>
+  <div class='header foodBar'>
     <h5><strong>Madras Pavillion</strong></h5>
     <li>Indian</li>
   </div>
@@ -32,38 +35,14 @@
 
 
 
-<!-- FAILED star rating-->
-<div class='movie_choice'>
-    IMDB Rating:
-    <div class="movieRate">
-        <div class="star_1 ratings_stars"></div>
-        <div class="star_2 ratings_stars"></div>
-        <div class="star_3 ratings_stars"></div>
-        <div class="star_4 ratings_stars"></div>
-        <div class="star_5 ratings_stars"></div>
-    </div>
-</div>
-<!-- FAILED star rating-->
-<div class='food_choice'>
-  Yelp Rating:
-    <div class="foodRate">
-        <div class="star_1 ratings_stars"></div>
-        <div class="star_2 ratings_stars"></div>
-        <div class="star_3 ratings_stars"></div>
-        <div class="star_4 ratings_stars"></div>
-        <div class="star_5 ratings_stars"></div>
-    </div>
-</div>
-
-  <div class ='midLine'></div>
-
 <!-- Movie Description-->  
 <p class='movieInfo'>Continuing his "legendary adventues of awesomeness", <br>
 Po must face two hugely epic, but different threats: one <br>
-supernatural and the other a litte closer to his home.</p>
+supernatural and the other a litte closer to his home.
+</p>
 
 <!-- Movie Cast/Crew-->
-<div class='movieDetails'style="float:left;list-style-type:none;">>
+<div class='movieDetails'style="float:left;list-style-type:none;">
   <li><strong>Directors: </strong> Alessandro Carloni, Jennifer Yuh</li><br>
   <li><strong>Writers: </strong> Jonathon Aibel, Glenn Berger</li><br>
   <li><strong>Stars: </strong> Jack Black, Bryan Cranston, Dustin Hoffman</li>
@@ -73,10 +52,10 @@ supernatural and the other a litte closer to his home.</p>
 <p class='foodInfo'>Multiple Vegetarian, Jain, Vegan options are available. We <br>
   are specialize in South Indian, North Indian, Indian-Chinese <br>
   fusion cuisine.
-  </p>
+</p>
 
 <!-- Food Cuisine and contact info-->
-<div class='foodDetails'style="list-style-type:none;">>
+<div class='foodDetails'style="list-style-type:none;">
   <li><strong>Phone: </strong> (512) 719-5575</li><br>
   <li><strong>Address: </strong> 9025 Research Blvd. Austin, TX 78758</li><br>
   <li><strong>Serving: </strong> Indian</li> <br>
