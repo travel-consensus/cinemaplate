@@ -21,6 +21,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 var routes = express.Router();
 
+<<<<<<< 74d9f0d6662af39275913723da1a08ff1c4ce768
 //returns movie array of objects - [{},{},{}]
 // reddit.getMovies()
 //     .then(function(res){
@@ -104,6 +105,79 @@ var routes = express.Router();
 // // console.log('out DATA:', data)
 //     });
 
+=======
+<<<<<<< 48602bd407d836ce8283cf2830a7620a796a9b74
+=======
+//still need to fold into routes.get
+yelp.getFoodByZip(78701)
+.then(function(res){
+    // console.log('i am the res', res); 
+    return res
+})
+.then(function(data){
+    var counter = 0
+      for (var key in data){
+        if (data[key] !== undefined){
+          var parsed = JSON.parse(JSON.stringify(data[key]))
+          var keys = Object.keys(parsed)
+          var restName, restDescription, restPhone, restAddress, restZipCode, restImageUrl, restEat24Url, restYelpRating, restYelpId, restCategories, restCategoriesLength
+          for (var i =0;i<keys.length;i++){
+            counter++
+            //preparing data for sql inserts
+            console.log(counter, ">>>", parsed[keys[i]].name)
+            //temp values for inserting in db
+              
+                  restName = parsed[keys[i]].name
+                  restDescription = parsed[keys[i]].snippet_text
+                  restPhone = parsed[keys[i]].display_phone
+                  restAddress = parsed[keys[i]].location.display_address
+                  restZipCode = parsed[keys[i]].location.postal_code
+                  // restHours = parsed[keys[i]].
+                  // restPriceRange = parsed[keys[i]].
+                  restImageUrl = parsed[keys[i]].image_url
+                  restEat24Url = parsed[keys[i]].eat24_url
+                  restYelpRating = parsed[keys[i]].rating
+                  restYelpId = parsed[keys[i]].id
+                  restCategoriesLength = parsed[keys[i]].categories.length
+                  restCategories = []
+
+                for (var j=0;j<restCategoriesLength;j++){
+                  //push categories into temp array
+                  restCategories.push(parsed[keys[i]].categories[j][1])
+                }
+                
+                }
+              };
+              };
+              
+            // console.log(restCategories)
+            pgClient = new pg.Client(pgConString)
+              pgClient.connect(function(err){
+                if (err){
+                  return console.error('could not connect to postgres', err);
+                }
+                var sqlInsertRestaurants = 'INSERT INTO "restaurants" (restaurant_name,restaurant_description,restaurant_phone, restaurant_address,restaurant_zip,restaurant_image_url,restaurant_url, restaurant_yelp_rating, restaurant_yelp_id) VALUES ($1, $2, $3) RETURNING restaurant_id'
+                
+                pgClient.query(sqlInsertRestaurants, [restName, restDescription, restPhone, restAddress, restZipCode, restImageUrl, restEat24Url, restYelpRating, restYelpId]), function (err, result){
+                    if (err){
+                      return console.error('error running query', err);
+                    }
+                    else {
+                      var newRestaurantID = result.rows[0].restaurant_id
+                      console.log(newRestaurantID)
+                    }
+                    // console.log(result.rows)
+                    res.send(result.rows);
+                    pgClient.end();
+            }
+        }
+      
+      return data
+     console.log(data)
+});
+
+>>>>>>> working on inserting restaurant data
+>>>>>>> working on inserting restaurant data
 //
 // Provide a browserified file at a specified path
 //
@@ -128,8 +202,15 @@ routes.get('/api/match/:zip', function(req, res) {
       if (err){
         return console.error('error running query', err);
       }
+<<<<<<< 74d9f0d6662af39275913723da1a08ff1c4ce768
 
       // console.log(result.rows)
+=======
+<<<<<<< 48602bd407d836ce8283cf2830a7620a796a9b74
+=======
+      // console.log(result.rows)
+>>>>>>> working on inserting restaurant data
+>>>>>>> working on inserting restaurant data
       res.send(result.rows);
       pgClient.end();
     });
@@ -143,6 +224,15 @@ routes.get('/', function(req, res){
   res.sendFile( assetFolder + '/index.html' );
 });
 
+<<<<<<< 48602bd407d836ce8283cf2830a7620a796a9b74
+=======
+
+
+routes.get('/', function(req, res){
+  res.sendFile( assetFolder + '/index.html' );
+});
+
+>>>>>>> working on inserting restaurant data
 //
 // Static assets (html, etc.)
 //
