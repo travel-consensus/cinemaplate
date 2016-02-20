@@ -9,17 +9,13 @@ angular.module('cinePlate.match', [])
     title: 'Kung Fu Panda',
     rating: 4
   }
-  $scope.restaurant = { 
-    name: 'Jims BBQ',
-    rating: 3
-  }
 
-  $scope.data = {}
+  $scope.restaurant = {}
 
   $scope.generateMatch = function () {
-    Matches.generateMatch()
+    Matches.generateMatch($routeParams.zip)
       .then(function (response) {
-        $scope.data.genres = response;
+        $scope.restaurant = response[0];
       })
       .catch(function (error) {
         console.error(error);

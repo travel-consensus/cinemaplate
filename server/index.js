@@ -102,14 +102,17 @@ routes.get('/css/app-bundle.css', sass.serve('./client/scss/app.scss'));
 // Match endpoint to match movie genres with cuisines
 //
 routes.get('/api/match/:zip', function(req, res) {
+
   var zip = req.params.zip;
+  // Get first 3 zip digits for SQL "like" query.
+  var slimZip = zip.slice(0,3);
 
   var pgClient = new pg.Client(pgConString);
   pgClient.connect(function(err){
     if (err){
       return console.error('could not connect to postgres', err);
     }
-    pgClient.query('SELECT * FROM "genres"', function (err, result){
+    pgClient.query("SELECT * FROM restaurants WHERE restaurant_zip LIKE '" + slimZip + "%' order by random() limit 1", function (err, result){
       if (err){
         return console.error('error running query', err);
       }
@@ -123,14 +126,11 @@ routes.get('/api/match/:zip', function(req, res) {
 });
 
 
-routes.get('/', function(req, res){
-  res.sendFile( assetFolder + '/index.html' );
-});
 
 //
 // Static assets (html, etc.)
 //
-var assetFolder = Path.resolve(__dirname, '../client/');
+var assetFolder = Path.resolve(__dirname, '../client');
 routes.use(express.static(assetFolder));
 
 
@@ -141,7 +141,7 @@ if (process.env.NODE_ENV !== 'test') {
   // NOTE: Make sure this route is always LAST.
   //
   routes.get('/*', function(req, res){
-    res.sendFile( assetFolder + 'index.html' );
+    res.sendFile( assetFolder + '/index.html' );
   });
 
   //
