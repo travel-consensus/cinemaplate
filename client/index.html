@@ -8,7 +8,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <script src="/app-bundle.js"></script> 
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <link rel="stylesheet" href="/css/app-bundle.css" id="logo"/>
+  <link rel="stylesheet" href="/css/app-bundle.css" />
 </head>
 
 <body>
@@ -16,6 +16,8 @@
       Use ngView to load in templates via controllers! Which template/controller
       to use is determined by $routeProvider in app.js
   -->
-  <div ng-view></div>
+  <div class="wrapper">
+    <div ng-view></div>
+  </div>
 </body>
 </html>
