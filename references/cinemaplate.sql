@@ -38,26 +38,6 @@ CREATE TABLE IF NOT EXISTS "restaurants" (
 
 
 
-<<<<<<< 74d9f0d6662af39275913723da1a08ff1c4ce768
-=======
-CREATE TABLE IF NOT EXISTS "cuisines" (
-  "cuisine_id" SERIAL NOT NULL,
-  "cuisine_name" varchar(255) NOT NULL,
-  "cuisine_yelp_category_id" varchar(255) NOT NULL UNIQUE,
-  CONSTRAINT cuisines_pk PRIMARY KEY ("cuisine_id")
-);
-
-
-
-CREATE TABLE IF NOT EXISTS "restaurantCuisines" (
-  "restaurant_cuisine_id" SERIAL NOT NULL,
-  "fk_restaurant_id" integer NOT NULL REFERENCES restaurants(restaurant_id) ON DELETE CASCADE,
-  "fk_cuisine_yelp_category_id" varchar(255) NOT NULL REFERENCES cuisines(cuisine_yelp_category_id) ON DELETE RESTRICT,
-  CONSTRAINT restaurantCuisines_pk PRIMARY KEY ("restaurant_cuisine_id")
-);
-
-
->>>>>>> working on inserting restaurant data
 
 CREATE TABLE IF NOT EXISTS "streamingUrls" (
   "url_id" SERIAL NOT NULL,
