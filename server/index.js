@@ -128,16 +128,20 @@ routes.get('/api/match/:zip', function(req, res) {
       if (err){
         return console.error('error running query', err);
       }
-      else {
-        console.log(result.rows)
-        res.send(result.rows);
-        pgClient.end();
-      }
+
+      // console.log(result.rows)
+      res.send(result.rows);
+      pgClient.end();
     });
   });
 });
 
 
+
+
+routes.get('/', function(req, res){
+  res.sendFile( assetFolder + '/index.html' );
+});
 
 //
 // Static assets (html, etc.)
