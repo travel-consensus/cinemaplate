@@ -15,6 +15,7 @@ angular.module('cinePlate.match', [])
   $scope.generateMatch = function () {
     Matches.generateMatch($routeParams.zip)
       .then(function (response) {
+        console.log(response)
         $scope.restaurant = response[0];
       })
       .catch(function (error) {
