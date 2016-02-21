@@ -1,70 +1,72 @@
 <!-- Star Ratings -->
-<span class="movieStar" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}"><i class="fa fa-star"></i></span>
-<span class="foodStar" ng-repeat="star in stars" ng-class="{selected: restaurant.rating > $index}"><i class="fa fa-star"></i></span>
-
-<!-- CinemaPlate Logo-->
-
-<div id='container'>
-<div class="svgMatcher">
-  <img src="./img/cinempate-logo.svg" id="logo"/>
-</div>
+<!-- <span class="movieStar" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}"><i class="fa fa-star"></i></span>
+<span class="foodStar" ng-repeat="star in stars" ng-class="{selected: restaurant.rating > $index}"><i class="fa fa-star"></i></span> -->
 
 <!-- Navigation Bar / Header -->
-
-  <nav class='navigation'>
-  <ul style="float:right;list-style-type:none;">
-    <li class='info'><a href='#about'>ABOUT</a></li>
-    <li class='info'><a href='#share'>SHARE</a></li>
+<div class="masthead u-cf">
+  <img src="../img/cinemplate-logo.svg" class="logo"/>
+  <ul class="navigation">
+    <li><a href='#about'>ABOUT</a></li>
+    <li><a href='#share'>SHARE</a></li>
   </ul>
-</nav>
+</div>
 
-<div class='infoBar u-cf'>
+<div class='match-info-bar u-cf'>
   <div class='spinAnimation'>
-  <i class='fa fa-refresh fa-3x fa-spin'></i>
-  </div>
-  <div class='header movieBar'>
-    <h5><strong>Kung Fu Panda 3</strong></h5>
-    <li>Animation, Action, Adventure</li>
+    <i class='fa fa-refresh fa-2x'></i>
   </div>
 
-  <div class='header foodBar'>
-    <h5><strong>Madras Pavillion</strong></h5>
-    <li>Indian</li>
+  <div class='header movie-bar'>
+    <h2>Kung Fu Panda 3</h2>
+    <ul class="header-title-meta">
+      <li>Animation</li>
+      <li>Adventure</li>
+      <li>Action</li>
+    </ul>
+  </div>
+
+  <div class='header food-bar'>
+    <h2>Madras Pavillion</h2>
+    <ul class="header-title-meta">
+      <li>Indian</li>
+    </ul>
   </div>
 </div>
 
-<!-- Movie Mini Description-->  
-<p class='movieInfo'>Continuing his "legendary adventues of awesomeness", <br>
-Po must face two hugely epic, but different threats: one <br>
-supernatural and the other a litte closer to his home.
-</p>
+<div class="match-details u-cf">
+  <div class="detail-col">
+    <!-- Movie Mini Description-->  
+    <p class="summary">
+      Continuing his "legendary adventues of awesomeness", Po must face two hugely epic, but different threats: one supernatural and the other a litte closer to his home.
+    </p>
 
-<!-- Movie Cast/Crew-->
-<div class='movieDetails'style="float:left;list-style-type:none;">
-  <li><strong>Directors: </strong> Alessandro Carloni, Jennifer Yuh</li><br>
-  <li><strong>Writers: </strong> Jonathon Aibel, Glenn Berger</li><br>
-  <li><strong>Stars: </strong> Jack Black, Bryan Cranston, Dustin Hoffman</li>
+    <!-- Movie Cast/Crew-->
+    <ul class="summary-meta">
+      <li><strong>Directors: </strong> Alessandro Carloni, Jennifer Yuh</li><br>
+      <li><strong>Writers: </strong> Jonathon Aibel, Glenn Berger</li><br>
+      <li><strong>Stars: </strong> Jack Black, Bryan Cranston, Dustin Hoffman</li>
+    </ul>
+    <a href="http://netflix.com" class="button">Add To Netflix Queue</a>
+
+  </div>
+
+  <div class="detail-col">
+    <!-- Food Mini Description-->  
+    <p class="summary">
+      Multiple Vegetarian, Jain, Vegan options are available. We are specialize in South Indian, North Indian, Indian-Chinese fusion cuisine.
+    </p>
+
+    <!-- Food Cuisine and contact info-->
+    <div class="summary-meta">
+      <li><strong>Phone: </strong> (512) 719-5575</li><br>
+      <li><strong>Address: </strong> 9025 Research Blvd. Austin, TX 78758</li><br>
+      <li><strong>Serving: </strong> Indian</li> <br>
+    </div>
+
+    <a href="http://yelp.com" target="_new" class="button">Place An Order</a>
+
+  </div>
 </div>
-
-<!-- Food Mini Description-->  
-<p class='foodInfo'>Multiple Vegetarian, Jain, Vegan options are available. We <br>
-  are specialize in South Indian, North Indian, Indian-Chinese <br>
-  fusion cuisine.
-</p>
-
-<!-- Food Cuisine and contact info-->
-<div class='foodDetails'style="float:right;list-style-type:none;">
-  <li><strong>Phone: </strong> (512) 719-5575</li><br>
-  <li><strong>Address: </strong> 9025 Research Blvd. Austin, TX 78758</li><br>
-  <li><strong>Serving: </strong> Indian</li> <br>
-</div>
-
-<!-- netflix and order buttons-->  
-<button type="button" class="netflix" autocapitalize="none">Add To Netflix Queue</button>
-<button type="button" class="order" autocapitalize="none">Place An Order</button>
-
-<!-- PANDA!!!! -->
-<img class='panda' src="./img/kfp3.jpg">
 
 
 <!-- 
