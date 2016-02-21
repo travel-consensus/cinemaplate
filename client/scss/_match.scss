@@ -4,7 +4,6 @@
 
 .masthead {
   background-color: $primary_accent;
-  padding: 0 4em;
   width: 100%;
   height: 60px;
   line-height: 60px;
@@ -43,7 +42,10 @@
   overflow: hidden;
   width: 100%;
   position: relative;
-  padding: 2em 4em;
+  padding: 2em 0;
+  box-shadow: 0 3px 20px rgba(0, 0,0, 0.6);
+  border-bottom: 1px solid #000;
+  z-index: 2;
   .header {
     h2 {
       margin: 0;
@@ -75,14 +77,21 @@
 
 .match-details {
   background: $body_bg;
+  min-height: 500px;
   height: 100%;
   width: 100%;
   padding: 2em 4em;
   color: #ccc;
-  .detail-col {
-    float: left;
-    width: 50%;
-  }
+}
+
+.button {
+  position: relative;
+  top: -29px;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
+}
+.button-right {
+  float: right;
 }
 
 .spinAnimation {
@@ -111,6 +120,13 @@
   }
 }
 
-.star.selected {
-  color: $secondary_accent;
+.star-rating {
+  float: right;
+  .star {
+    color: #666;
+    margin-right: 0.2em;
+  }
+  .star.selected {
+    color: $secondary_accent;
+  }
 }

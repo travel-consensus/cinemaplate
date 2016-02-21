@@ -114,11 +114,9 @@ routes.get('/css/app-bundle.css', sass.serve('./client/scss/app.scss'));
 // Match endpoint to match movie genres with cuisines
 //
 routes.get('/api/match/:zip', function(req, res) {
-
   var zip = req.params.zip;
   // Get first 3 zip digits for SQL "like" query.
   var slimZip = zip.slice(0,3);
-
   var pgClient = new pg.Client(pgConString);
   pgClient.connect(function(err){
     if (err){

@@ -1,70 +1,82 @@
-<!-- Star Ratings -->
-<!-- <span class="movieStar" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}"><i class="fa fa-star"></i></span>
-<span class="foodStar" ng-repeat="star in stars" ng-class="{selected: restaurant.rating > $index}"><i class="fa fa-star"></i></span> -->
-
 <!-- Navigation Bar / Header -->
 <div class="masthead u-cf">
-  <img src="../img/cinemplate-logo.svg" class="logo"/>
-  <ul class="navigation">
-    <li><a href='#about'>ABOUT</a></li>
-    <li><a href='#share'>SHARE</a></li>
-  </ul>
+  <div class="row">
+    <img src="../img/cinemplate-logo.svg" class="logo"/>
+    <ul class="navigation">
+      <li><a href='#about'>ABOUT</a></li>
+      <li><a href='#share'>SHARE</a></li>
+    </ul>
+  </div>
 </div>
 
 <div class='match-info-bar u-cf'>
-  <div class='spinAnimation'>
-    <i class='fa fa-refresh fa-2x'></i>
-  </div>
+  <div class="row">
+    <div class='spinAnimation'>
+      <i class='fa fa-refresh fa-2x'></i>
+    </div>
 
-  <div class='header movie-bar'>
-    <h2>Kung Fu Panda 3</h2>
-    <ul class="header-title-meta">
-      <li>Animation</li>
-      <li>Adventure</li>
-      <li>Action</li>
-    </ul>
-  </div>
+    <div class='header movie-bar'>
+      <div class="star-rating">
+        <span class="star" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}"><i class="fa fa-star"></i></span>
+      </div>
+      <h2>Kung Fu Panda 3</h2>
+      <ul class="header-title-meta">
+        <li>Animation</li>
+        <li>Adventure</li>
+        <li>Action</li>
+      </ul>
+    </div>
 
-  <div class='header food-bar'>
-    <h2>Madras Pavillion</h2>
-    <ul class="header-title-meta">
-      <li>Indian</li>
-    </ul>
+    <div class='header food-bar'>
+      <div class="star-rating">
+        <span class="star" ng-repeat="star in stars" ng-class="{selected: restaurant.restaurant_yelp_rating > $index}"><i class="fa fa-star"></i></span>
+      </div>
+      <h2>{{ restaurant.restaurant_name }}</h2>
+      <ul class="header-title-meta">
+        <li>{{ restaurant.restaurant_cuisines }}</li>
+      </ul>
+    </div>
   </div>
 </div>
 
 <div class="match-details u-cf">
-  <div class="detail-col">
-    <!-- Movie Mini Description-->  
-    <p class="summary">
-      Continuing his "legendary adventues of awesomeness", Po must face two hugely epic, but different threats: one supernatural and the other a litte closer to his home.
-    </p>
+  <div class="row">
+    <div class="one-half column">
+      <a href="http://netflix.com" class="button">Add To Netflix Queue</a>
+      <!-- Movie Mini Description-->  
+      <p class="summary">
+        Continuing his "legendary adventues of awesomeness", Po must face two hugely epic, but different threats: one supernatural and the other a litte closer to his home.
+      </p>
 
-    <!-- Movie Cast/Crew-->
-    <ul class="summary-meta">
-      <li><strong>Directors: </strong> Alessandro Carloni, Jennifer Yuh</li><br>
-      <li><strong>Writers: </strong> Jonathon Aibel, Glenn Berger</li><br>
-      <li><strong>Stars: </strong> Jack Black, Bryan Cranston, Dustin Hoffman</li>
-    </ul>
-    <a href="http://netflix.com" class="button">Add To Netflix Queue</a>
+      <!-- Movie Cast/Crew-->
+      <ul class="summary-meta">
+        <li><strong>Directors: </strong> Alessandro Carloni, Jennifer Yuh</li><br>
+        <li><strong>Writers: </strong> Jonathon Aibel, Glenn Berger</li><br>
+        <li><strong>Stars: </strong> Jack Black, Bryan Cranston, Dustin Hoffman</li>
+      </ul>
 
-  </div>
-
-  <div class="detail-col">
-    <!-- Food Mini Description-->  
-    <p class="summary">
-      Multiple Vegetarian, Jain, Vegan options are available. We are specialize in South Indian, North Indian, Indian-Chinese fusion cuisine.
-    </p>
-
-    <!-- Food Cuisine and contact info-->
-    <div class="summary-meta">
-      <li><strong>Phone: </strong> (512) 719-5575</li><br>
-      <li><strong>Address: </strong> 9025 Research Blvd. Austin, TX 78758</li><br>
-      <li><strong>Serving: </strong> Indian</li> <br>
     </div>
 
-    <a href="http://yelp.com" target="_new" class="button">Place An Order</a>
+    <div class="one-half column">
+      <a href="{{ restaurant.restaurant_url }}" target="_new" class="button button-right">Place An Order</a>
 
+      <!-- Food Mini Description-->  
+      <p class="summary">
+        {{ restaurant.restaurant_description }}
+      </p>
+
+      <!-- Food Cuisine and contact info-->
+      <div class="summary-meta">
+        <li><strong>Phone: </strong> <a href="tel:{{ restaurant.restaurant_phone }}">{{ restaurant.restaurant_phone }}</a></li><br>
+        <li><strong>Address: </strong> {{ restaurant.restaurant_address }} {{ restaurant.restaurant_zip }}</li><br>
+        <li><strong>Serving: </strong> {{ restaurant.restaurant_cuisines }}</li> <br>
+      </div>
+      <div>
+        <img src="{{ restaurant.restaurant_image_url }}" />
+      </div>
+
+
+    </div>
   </div>
 </div>
 
