@@ -1,7 +1,7 @@
 <!-- Navigation Bar / Header -->
 <div class="masthead u-cf">
   <div class="row">
-    <img src="../img/cinemplate-logo.svg" class="logo"/>
+    <a href="/#/"><img src="../img/cinemplate-logo.svg" class="logo"/></a>
     <ul class="navigation">
       <li><a href='#'><i class="fa fa-map-marker"></i>&nbsp;{{ searchZip }}</a></li>
     </ul>
@@ -45,16 +45,40 @@
         <a href="http://netflix.com" class="button"><i class="fa fa-film"></i>Add To Netflix Queue</a>
       </div>
       <!-- Movie Mini Description-->  
-      <p class="summary">
-        Continuing his "legendary adventues of awesomeness", Po must face two hugely epic, but different threats: one supernatural and the other a litte closer to his home.
-      </p>
+      <div class="summary-wrapper u-cf">
+        <img src="./img/kfp3.jpg" />
+        <p class="summary">
+          Continuing his "legendary adventues of awesomeness", Po must face two hugely epic, but different threats: one supernatural and the other a litte closer to his home.
+        </p>
+      </div>
 
       <!-- Movie Cast/Crew-->
-      <ul class="summary-meta">
-        <li><strong>Directors: </strong> Alessandro Carloni, Jennifer Yuh</li>
-        <li><strong>Writers: </strong> Jonathon Aibel, Glenn Berger</li>
-        <li><strong>Stars: </strong> Jack Black, Bryan Cranston, Dustin Hoffman</li>
-      </ul>
+      <table>
+        <tr>
+          <td>
+            <strong>Directors</strong>
+          </td>
+          <td>
+            Alessandro Carloni, Jennifer Yuh
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Writers</strong>
+          </td>
+          <td>
+            Jonathon Aibel, Glenn Berger
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Stars</strong>
+          </td>
+          <td>
+            Jack Black, Bryan Cranston, Dustin Hoffman
+          </td>
+        </tr>
+      </table>
 
     </div>
 
@@ -75,7 +99,7 @@
       <table>
         <tr>
           <td>
-            <strong>Phone:</strong>
+            <strong>Phone</strong>
           </td>
           <td>
             <a href="tel:{{ restaurant.restaurant_phone }}">{{ restaurant.restaurant_phone }}</a>
@@ -83,25 +107,21 @@
         </tr>
         <tr>
           <td>
-            <strong>Address:</strong>
+            <strong>Address</strong>
           </td>
           <td>
-            {{ restaurant.restaurant_address }} {{ restaurant.restaurant_zip }}
+            {{ restaurant.restaurant_address }}
           </td>
         </tr>
         <tr>
           <td>
-            <strong>Serving:</strong>
+            <strong>Serving</strong>
           </td>
           <td>
             {{ restaurant.restaurant_cuisines }}
           </td>
         </tr>
       </table>
-      <div>
-      </div>
-
-
     </div>
   </div>
 </div>
