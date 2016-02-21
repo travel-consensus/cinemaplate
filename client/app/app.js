@@ -18,7 +18,7 @@ angular.module('cinePlate', [require('angular-route'), 'cinePlate.services', 'ci
 
   // The /match route is where the results of a zip code
   // lookup are loaded.
-  .when('/match/:zip', {
+  .when('/:zip', {
     templateUrl: 'app/match/match.html',
     controller: 'MatchCtrl'
   })

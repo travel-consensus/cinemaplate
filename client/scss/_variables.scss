@@ -24,3 +24,12 @@ h1, h2, h3, h4, h5, h6 {
 .column {
   margin-left: 8%;
 }
+
+a {
+  text-decoration: none;
+  color: inherit;
+  border-bottom: 1px solid;
+  &:hover {
+    color: $secondary_accent;
+  }
+}

@@ -10,7 +10,7 @@ angular.module('cinePlate.splash', [])
   $scope.getZip = function () {
     if($scope.zip){
       console.log($scope.zip)
-      $location.path('/match/' + $scope.zip);
+      $location.path('/' + $scope.zip);
     }
   }
 }])
