@@ -10,4 +10,17 @@ $body_copy_light:   rgba(231, 231, 231, 0.5);
 button, .button {
   border: none;
   background: $secondary_accent;
+  font-weight: 700;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 400;
+}
+
+.one-half.column {
+  width: 46%;
+}
+
+.column {
+  margin-left: 8%;
 }

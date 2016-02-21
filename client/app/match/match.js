@@ -10,6 +10,7 @@ angular.module('cinePlate.match', [])
     rating: 4
   }
 
+  $scope.searchZip = $routeParams.zip;
   $scope.restaurant = {}
 
   $scope.generateMatch = function () {
