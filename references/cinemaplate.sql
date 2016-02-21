@@ -1,3 +1,6 @@
+DROP SCHEMA public cascade; 
+CREATE SCHEMA public;  
+
 CREATE TABLE IF NOT EXISTS "genres" (
   "genre_id" SERIAL NOT NULL,
   "genre_name" varchar(100) NOT NULL,
@@ -10,12 +13,10 @@ INSERT INTO "genres" (genre_name, genre_moviedb_id) VALUES ('Action',28),('Adven
 
 CREATE TABLE IF NOT EXISTS "movies" (
   "movie_id" SERIAL NOT NULL,
-  "movie_title" varchar(255) NOT NULL,
+  "movie_title" varchar(255) NOT NULL UNIQUE,
   "movie_summary" TEXT NOT NULL,
-  "movie_rating" DECIMAL NOT NULL,
-  "movie_release_year" integer NOT NULL,
-  "movie_director" varchar(255) NOT NULL,
-  "movie_actors" TEXT NOT NULL,
+  "movie_url" TEXT,
+  "movie_image_url" TEXT,
   CONSTRAINT movies_pk PRIMARY KEY ("movie_id")
 );
 
