@@ -26,11 +26,10 @@ input:-moz-placeholder { color: #999; font-style: italic; font-weight: normal; }
 .splash-lead {
   border-top: 1px solid darken($primary_accent, 5);
   font-size: 2rem;
-  color: #fafafa;
+  color: #fff;
   text-align: center;
   margin: 1em 0 1em;
   padding: 1em;
-  opacity: 0.95;
 }
 
 .splash-zip-form {

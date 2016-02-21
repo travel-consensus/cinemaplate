@@ -14,24 +14,30 @@
     height: 30px;
     position: relative;
     top: 14px;
+    opacity: 0.9;
   }
   .navigation {
     color: white;
     list-style-type: none;
     float: right;
     margin: 0;
-    font-size: 1.3rem;  
+    font-size: 1.5rem;
+    font-weight: 400;
     li {
       display: inline;
       margin-left: 2em;
     }
     a {
-      color: white;
       text-align: center;
       text-decoration: none;
       letter-spacing: 1px;
+      height: 60px;
+      display: inline-block;
+      padding: 0 1em;
+      background: darken($primary_accent, 5);
+      color: darken($primary_accent, 20);
       &:hover {
-        border-bottom: 1px solid;
+        color: #fff;
       }
     }
   }
@@ -49,12 +55,9 @@
   .header {
     h2 {
       margin: 0;
-      font-size: 3rem;
+      font-size: 2.4rem;
     }
     color: white;
-    position: relative;
-    float: left;
-    width: 50%;
   }
   .header-title-meta {
     list-style: none;
@@ -80,19 +83,49 @@
   min-height: 500px;
   height: 100%;
   width: 100%;
-  padding: 2em 4em;
+  padding: 0 4em 3em;
   color: #ccc;
+  .summary-wrapper {
+    border-bottom: 2px solid darken($body_bg, 5);
+    margin-bottom: 2em;
+    img {
+      float: left;
+      width: 100px;
+      border: 1px solid #333;
+      border-radius: 4px;
+      position: relative;
+      top: 4px;
+    }
+    p {
+      margin-left: 115px;
+    }
+  }
 }
 
-.button {
-  position: relative;
-  top: -29px;
-  border-top-right-radius: 0;
-  border-top-left-radius: 0;
+.cta {
+  width: 100%;
+  margin-bottom: 2.5em;
+  .button {
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    margin: auto;
+    display: block;
+    background: #555;
+    height: 50px;
+    line-height: 50px;
+    color: $secondary_accent;
+    border: 1px solid rgba(#000, 0.4);
+    border-top: none;
+    i {
+      margin-right: 0.5rem; 
+    }
+    &:hover {
+      background: $secondary_accent;
+      color: #555;
+    }
+  }
 }
-.button-right {
-  float: right;
-}
+
 
 .spinAnimation {
   display: none;
@@ -127,6 +160,6 @@
     margin-right: 0.2em;
   }
   .star.selected {
-    color: $secondary_accent;
+    color: $primary_accent;
   }
 }

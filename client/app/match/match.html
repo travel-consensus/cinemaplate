@@ -3,19 +3,18 @@
   <div class="row">
     <img src="../img/cinemplate-logo.svg" class="logo"/>
     <ul class="navigation">
-      <li><a href='#about'>ABOUT</a></li>
-      <li><a href='#share'>SHARE</a></li>
+      <li><a href='#'><i class="fa fa-map-marker"></i>&nbsp;{{ searchZip }}</a></li>
     </ul>
   </div>
 </div>
 
 <div class='match-info-bar u-cf'>
+  <div class='spinAnimation'>
+    <i class='fa fa-refresh fa-2x'></i>
+  </div>
   <div class="row">
-    <div class='spinAnimation'>
-      <i class='fa fa-refresh fa-2x'></i>
-    </div>
 
-    <div class='header movie-bar'>
+    <div class='one-half column header movie-bar'>
       <div class="star-rating">
         <span class="star" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}"><i class="fa fa-star"></i></span>
       </div>
@@ -27,7 +26,7 @@
       </ul>
     </div>
 
-    <div class='header food-bar'>
+    <div class='one-half column header food-bar'>
       <div class="star-rating">
         <span class="star" ng-repeat="star in stars" ng-class="{selected: restaurant.restaurant_yelp_rating > $index}"><i class="fa fa-star"></i></span>
       </div>
@@ -42,7 +41,9 @@
 <div class="match-details u-cf">
   <div class="row">
     <div class="one-half column">
-      <a href="http://netflix.com" class="button">Add To Netflix Queue</a>
+      <div class="cta">
+        <a href="http://netflix.com" class="button"><i class="fa fa-film"></i>Add To Netflix Queue</a>
+      </div>
       <!-- Movie Mini Description-->  
       <p class="summary">
         Continuing his "legendary adventues of awesomeness", Po must face two hugely epic, but different threats: one supernatural and the other a litte closer to his home.
@@ -50,29 +51,54 @@
 
       <!-- Movie Cast/Crew-->
       <ul class="summary-meta">
-        <li><strong>Directors: </strong> Alessandro Carloni, Jennifer Yuh</li><br>
-        <li><strong>Writers: </strong> Jonathon Aibel, Glenn Berger</li><br>
+        <li><strong>Directors: </strong> Alessandro Carloni, Jennifer Yuh</li>
+        <li><strong>Writers: </strong> Jonathon Aibel, Glenn Berger</li>
         <li><strong>Stars: </strong> Jack Black, Bryan Cranston, Dustin Hoffman</li>
       </ul>
 
     </div>
 
     <div class="one-half column">
-      <a href="{{ restaurant.restaurant_url }}" target="_new" class="button button-right">Place An Order</a>
+      <div class="cta u-cf">
+        <a href="{{ restaurant.restaurant_url }}" target="_new" class="button"><i class="fa fa-cutlery  "></i>&nbsp;Place An Order</a>
+      </div>
 
       <!-- Food Mini Description-->  
-      <p class="summary">
-        {{ restaurant.restaurant_description }}
-      </p>
+      <div class="summary-wrapper u-cf">
+        <img src="{{ restaurant.restaurant_image_url }}" />
+        <p class="summary">
+          {{ restaurant.restaurant_description }}
+        </p>
+      </div>
 
       <!-- Food Cuisine and contact info-->
-      <div class="summary-meta">
-        <li><strong>Phone: </strong> <a href="tel:{{ restaurant.restaurant_phone }}">{{ restaurant.restaurant_phone }}</a></li><br>
-        <li><strong>Address: </strong> {{ restaurant.restaurant_address }} {{ restaurant.restaurant_zip }}</li><br>
-        <li><strong>Serving: </strong> {{ restaurant.restaurant_cuisines }}</li> <br>
-      </div>
+      <table>
+        <tr>
+          <td>
+            <strong>Phone:</strong>
+          </td>
+          <td>
+            <a href="tel:{{ restaurant.restaurant_phone }}">{{ restaurant.restaurant_phone }}</a>
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Address:</strong>
+          </td>
+          <td>
+            {{ restaurant.restaurant_address }} {{ restaurant.restaurant_zip }}
+          </td>
+        </tr>
+        <tr>
+          <td>
+            <strong>Serving:</strong>
+          </td>
+          <td>
+            {{ restaurant.restaurant_cuisines }}
+          </td>
+        </tr>
+      </table>
       <div>
-        <img src="{{ restaurant.restaurant_image_url }}" />
       </div>
 
 
