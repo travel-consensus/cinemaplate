@@ -8,7 +8,7 @@ var services = require('./services/services.js');
 
 // Instantiate our app instance and add ngRoute as a dependecy via
 // the 'angular-route' npm module. (ngRoute === angular-route)
-angular.module('cinePlate', [require('angular-route'), 'cinePlate.services', 'cinePlate.splash', 'cinePlate.match'])
+angular.module('cinePlate', [require('angular-route'), require('angular-animate'), 'cinePlate.services', 'cinePlate.splash', 'cinePlate.match'])
 
 // Angular routing -- Express handles serving the index.html file
 // and we use Angular's $routeProvider via ngRoute to match urls
