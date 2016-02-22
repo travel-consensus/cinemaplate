@@ -30,7 +30,6 @@ CREATE TABLE IF NOT EXISTS "restaurants" (
   "restaurant_name" varchar(255) NOT NULL,
   "restaurant_description" TEXT,
   "restaurant_phone" varchar(15),
-  "restaurant_address" varchar,
   "restaurant_street_address" VARCHAR,
   "restaurant_city" VARCHAR,
   "restaurant_state" VARCHAR,
