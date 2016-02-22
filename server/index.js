@@ -66,63 +66,67 @@ var routes = express.Router();
 
 
 // //still need to fold into routes.get
-// yelp.getFoodByZip(78749)
-// .then(function(res){
-// //     // console.log('i am the res', res); 
-//     return res
-// })
-// .then(function(data){
-//           //loop through each restaurant and get restaurant details
-//     console.log("Total Restaurants Returned: ", data.length)
-//     var i;
-//     for (i =0;i<data.length;i++){
-//       (function(){
+yelp.getFoodByZip(78749)
+.then(function(res){
+//     // console.log('i am the res', res); 
+    return res
+})
+.then(function(data){
+          //loop through each restaurant and get restaurant details
+    console.log("Total Restaurants Returned: ", data.length)
+    console.log("Restaurant Object", data[0].location.city)
+    var i;
+    for (i =0;i<data.length;i++){
+      (function(){
 
-//        var restName = data[i].name
-//        var restDescription = data[i].snippet_text
-//        var restPhone = data[i].display_phone
-//        var restAddress = data[i].location.display_address
-//        var restZipCode = data[i].location.postal_code
-//        var restImageUrl = data[i].image_url
-//        var restEat24Url = data[i].eat24_url
-//        var restYelpRating = data[i].rating
-//        var restYelpId = data[i].id
-//        var restCuisinesLength = data[i].categories.length
-//        var restCuisines = []
-//        // var newRestaurantID
+       var restName = data[i].name
+       var restDescription = data[i].snippet_text
+       var restPhone = data[i].display_phone
+       var restAddress = data[i].location.display_address
+       var restStreetAddress = data[i].location.display_address[0]
+       var restCity = data[i].location.city
+       var restState = data[i].location.state_code
+       var restZipCode = data[i].location.postal_code
+       var restImageUrl = data[i].image_url
+       var restEat24Url = data[i].eat24_url
+       var restYelpRating = data[i].rating
+       var restYelpId = data[i].id
+       var restCuisinesLength = data[i].categories.length
+       var restCuisines = []
+       // var newRestaurantID
 
-//         // push categories into temp array
-//         for (var j=0;j<restCuisinesLength;j++){
-//           restCuisines.push(data[i].categories[j][0])
-//         }
+        // push categories into temp array
+        for (var j=0;j<restCuisinesLength;j++){
+          restCuisines.push(data[i].categories[j][0])
+        }
 
-//         console.log(i+1, ">>>", data[i].name)
-//         // console.log(restCuisines)
+        console.log(i+1, ">>>", data[i].name)
+        // console.log(restCuisines)
 
-//       pgClient = new pg.Client(pgConString)
-//         pgClient.connect(function(err){
-//           if (err){
-//             return console.log('could not connect to postgres', err);
-//           }
-//           var sqlInsertRestaurants = 'INSERT INTO "restaurants" (restaurant_name,restaurant_description,restaurant_phone, restaurant_address,restaurant_zip,restaurant_image_url,restaurant_url, restaurant_yelp_rating, restaurant_yelp_id, restaurant_cuisines) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING restaurant_id'
+      // pgClient = new pg.Client(pgConString)
+      //   pgClient.connect(function(err){
+      //     if (err){
+      //       return console.log('could not connect to postgres', err);
+      //     }
+      //     var sqlInsertRestaurants = 'INSERT INTO "restaurants" (restaurant_name,restaurant_description,restaurant_phone, restaurant_address,restaurant_zip,restaurant_image_url,restaurant_url, restaurant_yelp_rating, restaurant_yelp_id, restaurant_cuisines) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING restaurant_id'
           
-//           pgClient.query(sqlInsertRestaurants, [restName, restDescription, restPhone, restAddress, restZipCode, restImageUrl, restEat24Url, restYelpRating, restYelpId,restCuisines], function (err, result){
-//               if (err){                 
-//                 return console.log('error inserting restaurant.', err.message);
-//               }
-//               else {
+      //     pgClient.query(sqlInsertRestaurants, [restName, restDescription, restPhone, restAddress, restZipCode, restImageUrl, restEat24Url, restYelpRating, restYelpId,restCuisines], function (err, result){
+      //         if (err){                 
+      //           return console.log('error inserting restaurant.', err.message);
+      //         }
+      //         else {
 
-//                  if (result.rows[0].restaurant_id !== undefined){
-//                   var newRestaurantID = result.rows[0].restaurant_id
-//                   newRestaurantID
-//                  }
-//                   console.log("NEW RESTAURANT ID: ", newRestaurantID)
-//               }
-//             })
-//           });
-//       })(i);
-//     }
-//   })
+      //            if (result.rows[0].restaurant_id !== undefined){
+      //             var newRestaurantID = result.rows[0].restaurant_id
+      //             newRestaurantID
+      //            }
+      //             console.log("NEW RESTAURANT ID: ", newRestaurantID)
+      //         }
+      //       })
+      //     });
+      })(i);
+    }
+  })
 
 
 //
@@ -162,47 +166,6 @@ routes.get('/api/match/:zip', function(req, res) {
 });
 
 
-//endpoints for testing and returning all db data
-// routes.get('/api/movies', function (req, res){
-//   pgClient = new pg.Client(pgConString);
-//   pgClient.connect(function(err){
-//     if (err){
-//       return console.log('could not connect to postgres', err);
-//     }
-//     pgClient.query("SELECT movie_title FROM movies", function (err, result){
-//       if (err){
-//         return console.log('error running query', err);
-//       }
-//       else {
-//         res.send(result.rows);
-//         pgClient.end();
-//       }
-//     });
-//   }); 
-
-// })
-
-
-
-// routes.get('/api/restaurants', function(req, res){
-
-//   pgClient = new pg.Client(pgConString);
-//   pgClient.connect(function(err){
-//     if (err){
-//       return console.log('could not connect to postgres', err);
-//     }
-//     pgClient.query("SELECT restaurant_name FROM restaurants", function (err, result){
-//       if (err){
-//         return console.log('error running query', err);
-//       }
-//       else {
-//         res.send(result.rows);
-//         pgClient.end();
-//       }
-//     });
-//   }); 
-// })
-//
 // Static assets (html, etc.)
 //
 var assetFolder = Path.resolve(__dirname, '../client');
