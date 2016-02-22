@@ -13,10 +13,13 @@ INSERT INTO "genres" (genre_name, genre_moviedb_id) VALUES ('Action',28),('Adven
 
 CREATE TABLE IF NOT EXISTS "movies" (
   "movie_id" SERIAL NOT NULL,
-  "movie_title" varchar(255) NOT NULL UNIQUE,
+  "movie_title" VARCHAR(255) NOT NULL UNIQUE,
   "movie_summary" TEXT NOT NULL,
   "movie_url" TEXT,
   "movie_image_url" TEXT,
+  "movie_rating" VARCHAR,
+  "movie_release_date"
+  "movie_genres"
   CONSTRAINT movies_pk PRIMARY KEY ("movie_id")
 );
 
@@ -28,6 +31,9 @@ CREATE TABLE IF NOT EXISTS "restaurants" (
   "restaurant_description" TEXT,
   "restaurant_phone" varchar(15),
   "restaurant_address" varchar,
+  "restaurant_street_address" VARCHAR,
+  "restaurant_city" VARCHAR,
+  "restaurant_state" VARCHAR,
   "restaurant_zip" varchar,
   "restaurant_image_url" TEXT,
   "restaurant_url" TEXT,
