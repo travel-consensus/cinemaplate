@@ -13,10 +13,13 @@ INSERT INTO "genres" (genre_name, genre_moviedb_id) VALUES ('Action',28),('Adven
 
 CREATE TABLE IF NOT EXISTS "movies" (
   "movie_id" SERIAL NOT NULL,
-  "movie_title" varchar(255) NOT NULL UNIQUE,
+  "movie_title" VARCHAR(255) NOT NULL UNIQUE,
   "movie_summary" TEXT NOT NULL,
   "movie_url" TEXT,
   "movie_image_url" TEXT,
+  "movie_rating" DECIMAL,
+  "movie_release_date" DATE,
+  "movie_genres" VARCHAR(255),
   CONSTRAINT movies_pk PRIMARY KEY ("movie_id")
 );
 
@@ -28,6 +31,9 @@ CREATE TABLE IF NOT EXISTS "restaurants" (
   "restaurant_description" TEXT,
   "restaurant_phone" varchar(15),
   "restaurant_address" varchar,
+  "restaurant_street_address" VARCHAR,
+  "restaurant_city" VARCHAR,
+  "restaurant_state" VARCHAR,
   "restaurant_zip" varchar,
   "restaurant_image_url" TEXT,
   "restaurant_url" TEXT,
@@ -35,31 +41,4 @@ CREATE TABLE IF NOT EXISTS "restaurants" (
   "restaurant_yelp_rating" DECIMAL,
   "restaurant_yelp_id" VARCHAR UNIQUE,
   CONSTRAINT restaurants_pk PRIMARY KEY ("restaurant_id")
-);
-
-
-
-
-CREATE TABLE IF NOT EXISTS "streamingUrls" (
-  "url_id" SERIAL NOT NULL,
-  "url" TEXT NOT NULL,
-  "fk_movie_id" integer NOT NULL REFERENCES movies(movie_id),
-  CONSTRAINT streamingUrls_pk PRIMARY KEY ("url_id"),
-);
-
-
-
-CREATE TABLE IF NOT EXISTS "movieGenres" (
-  "fk_movie_id" integer NOT NULL REFERENCES movies(movie_id) ON DELETE CASCADE,
-  "fk_genre_id" integer NOT NULL REFERENCES genres(genre_id) ON DELETE RESTRICT,
-  CONSTRAINT movieGenres_pk PRIMARY KEY (fk_movie_id, fk_genre_id)
-);
-
-
-
-CREATE TABLE IF NOT EXISTS "pairings" (
-  "pairing_id" SERIAL NOT NULL,
-  "fk_movie_id" integer NOT NULL REFERENCES movies(movie_id),
-  "fk_restaurant_id" integer NOT NULL REFERENCES restaurants(restaurant_id),
-  CONSTRAINT pairings_pk PRIMARY KEY ("pairing_id")
 );
