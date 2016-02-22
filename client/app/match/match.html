@@ -16,7 +16,7 @@
 
       <div class="one-half column header movie-bar animate-show" ng-show="contentLoaded">
         <div class="star-rating">
-          <span class="star" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}"><i class="fa fa-star"></i></span>
+          <span class="star" ng-repeat="star in stars" ng-class="{selected: movie.movie_rating > $index}"><i class="fa fa-star"></i></span>
         </div>
         <h2><a href="{{ movie.movie_url }}" target="_new">{{ movie.movie_title }}</a></h2>
         <ul class="header-title-meta">
@@ -61,7 +61,7 @@
           </tr>
           <tr>
             <td>
-              <strong>Genres</strong>
+              <strong>Genre</strong>
             </td>
             <td>
               {{ movie.movie_genres }}
