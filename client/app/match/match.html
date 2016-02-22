@@ -20,9 +20,7 @@
         </div>
         <h2><a href="{{ movie.movie_url }}" target="_new">{{ movie.movie_title }}</a></h2>
         <ul class="header-title-meta">
-          <li>Animation</li>
-          <li>Adventure</li>
-          <li>Action</li>
+          <li>{{ movie.movie_genres }}</li>
         </ul>
       </div>
 
@@ -58,7 +56,7 @@
               <strong>Release Date</strong>
             </td>
             <td>
-              &nbsp;
+              {{ movie.movie_release_date | date:'MMM d, yyyy' }}
             </td>
           </tr>
           <tr>
@@ -66,7 +64,7 @@
               <strong>Genres</strong>
             </td>
             <td>
-              &nbsp;
+              {{ movie.movie_genres }}
             </td>
           </tr>
           <tr>
@@ -74,7 +72,7 @@
               <strong>Rating</strong>
             </td>
             <td>
-              &nbsp;
+              {{ movie.movie_rating }}
             </td>
           </tr>
         </table>
@@ -112,7 +110,7 @@
               <strong>Address</strong>
             </td>
             <td>
-              {{ restaurant.restaurant_address }}
+              {{ restaurant.restaurant_street_address }} {{ restaurant.restaurant_city }}, {{ restaurant.restaurant_zip }}
             </td>
           </tr>
           <tr>
