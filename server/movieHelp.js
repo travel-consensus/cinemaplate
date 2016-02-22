@@ -49,7 +49,7 @@ movie.getMovieDB = function(redditObj){
                            summary: currMovie.overview, 
                            url: anObject[currMovie.title],
                            img: 'https://image.tmdb.org/t/p/w185/' + currMovie.poster_path, 
-                           rating: currMovie.vote_average/2, 
+                           rating: Math.round(currMovie.vote_average/2), 
                            releaseDate: currMovie.release_date, 
                            genreArray: currMovie.genre_ids
                           };
