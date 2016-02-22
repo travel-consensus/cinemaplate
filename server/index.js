@@ -22,46 +22,81 @@ if (process.env.NODE_ENV !== 'production') {
 var routes = express.Router();
 
 // returns movie array of objects - [{},{},{}]
-// reddit.getMovies()
-//   .then(function(res){
-//     return movie.getMovieDB(res)
-//   })
-//   .then(function(movieData){
-//       // console.log('I am the response, do with me as you will',movieData)
-//       console.log("Total Movies Returned: ", movieData.length)
+reddit.getMovies()
+  .then(function(res){
+    return movie.getMovieDB(res)
+  })
+  .then(function(movieData){
+      // console.log('I am the response, do with me as you will',movieData)
+      // console.log("Total Movies Returned: ", movieData)
 
-//       var k;
-//       for (k=0;k<movieData.length;k++){
-//         (function(){
-//           var movieTitle = movieData[k].title
-//           var movieSummary = movieData[k].summary
-//           var movieUrl = movieData[k].url
-//           var movieImageUrl = movieData[k].img
+      var k;
+      for (k=0;k<movieData.length;k++){
+        (function(){
+          var movieTitle = movieData[k].title
+          var movieSummary = movieData[k].summary
+          var movieUrl = movieData[k].url
+          var movieImageUrl = movieData[k].img
+          var movieRating = movieData[k].rating
+          var movieReleaseDate = movieData[k].releaseDate
+          var movieGenresArray = movieData[k].genreArray
+          var movieGenres = ''
+          // console.log(movieGenresArray.length)
+          if (movieGenresArray.length>0) {
+            for (var g=0;g<movieGenresArray.length;g++){
+              (function(){
 
-//           // pgClient = new pg.Client(pgConString)
-//           // pgClient.connect(function(err){
-//           // if (err){
-//           //   return console.error('could not connect to postgres', err);
-//           // }
-//           console.log("Adding movie ", k+1, ">>>", movieTitle)
-//           var sqlInsertMovie = 'INSERT INTO "movies" (movie_title, movie_summary, movie_url, movie_image_url) VALUES ($1, $2, $3, $4) RETURNING movie_id'
-          
-//           pgClient.query(sqlInsertMovie, [movieTitle, movieSummary, movieUrl, movieImageUrl], function (err, result){
-//               if (err){
-//                 return console.log('error inserting movie', err);
-//               }
-//               else {
+              })(g)
+              var thisGenreID = movieData[k].genreArray[g]
+              // console.log("GENRE ID: ", thisGenreID)
+              var sqlGetMovieGenre = 'SELECT genre_name FROM "genres" WHERE genre_moviedb_id=' + thisGenreID
 
-//                 var newMovieID = result.rows[0].movie_id
-//                  newMovieID
-//               }
-//                 console.log("NEW MOVIE ID: ", newMovieID)
-//             })
-//           // });
-//         })(k);
-//       }
-//       // return movieData
-//   })
+              pgClient.query(sqlGetMovieGenre, function(err, result){
+                if (err){
+                  return console.log("Error getting movie genre", err);
+                }
+                else {
+                  movieGenres += result.rows[0].genre_name
+                  // console.log("INITIAL: ", movieGenres)
+                }
+
+                var resultGenres = movieGenres.slice(0,-2)
+
+              // console.log("RESULT GENRES: ", resultGenres)
+              runInsertMovieQuery()
+              })
+              
+            
+            }
+          }
+
+          // pgClient = new pg.Client(pgConString)
+          // pgClient.connect(function(err){
+          // if (err){
+          //   return console.error('could not connect to postgres', err);
+          // }
+          var runInsertMovieQuery = function(){
+            
+            var sqlInsertMovie = 'INSERT INTO "movies" (movie_title, movie_summary, movie_url, movie_image_url, movie_rating, movie_release_date, movie_genres) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING movie_id'
+            
+            pgClient.query(sqlInsertMovie, [movieTitle, movieSummary, movieUrl, movieImageUrl, movieRating, movieReleaseDate, movieGenres], function (err, result){
+                if (err){
+                  return console.log('error inserting movie', err);
+                }
+                else {
+
+                  console.log("Adding movie >>>", movieTitle)
+                  var newMovieID = result.rows[0].movie_id
+                   newMovieID
+                }
+                  console.log("NEW MOVIE ID: ", newMovieID)
+              })
+          }
+          // });
+        })(k);
+      }
+      // return movieData
+  })
             
 
 
@@ -101,7 +136,7 @@ yelp.getFoodByZip(78749)
 
         console.log(i+1, ">>>", data[i].name)
         // console.log(restCuisines)
-        console.log(restCuisines.slice(0,-2))
+        // console.log(restCuisines.slice(0,-2))
         restCuisines = restCuisines.slice(0,-2)
         // if (restCuisines[restCuisines.length])
 
