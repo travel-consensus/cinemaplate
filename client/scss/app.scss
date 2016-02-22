@@ -21,6 +21,25 @@ html, body {
 
 .row {
   width: 100%;
-  max-width: 780px;
+  max-width: 960px;
   margin: auto;
+}
+
+.animate-show {
+  opacity: 1;
+  // line-height: inherit;
+}
+
+.animate-show.ng-hide-add,
+.animate-show.ng-hide-remove {
+  transition: all linear 0.3s;
+}
+
+.animate-show.ng-hide {
+  opacity: 0;
+  // line-height: 0;
+}
+
+.animate-show.ng-hide .generate-match {
+  background: $primary_accent;
 }

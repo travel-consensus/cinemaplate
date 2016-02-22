@@ -1,189 +1,102 @@
 <!-- Navigation Bar / Header -->
-<div class="masthead u-cf">
-  <div class="row">
-    <a href="/#/"><img src="../img/cinemplate-logo.svg" class="logo"/></a>
-    <ul class="navigation">
-      <li><a href='#'><i class="fa fa-map-marker"></i>&nbsp;{{ searchZip }}</a></li>
-    </ul>
-  </div>
-</div>
-
-<div class='match-info-bar u-cf'>
-  <div class='spinAnimation'>
-    <i class='fa fa-refresh fa-2x'></i>
-  </div>
-  <div class="row">
-
-    <div class='one-half column header movie-bar'>
-      <div class="star-rating">
-        <span class="star" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}"><i class="fa fa-star"></i></span>
-      </div>
-      <h2>Kung Fu Panda 3</h2>
-      <ul class="header-title-meta">
-        <li>Animation</li>
-        <li>Adventure</li>
-        <li>Action</li>
-      </ul>
-    </div>
-
-    <div class='one-half column header food-bar'>
-      <div class="star-rating">
-        <span class="star" ng-repeat="star in stars" ng-class="{selected: restaurant.restaurant_yelp_rating > $index}"><i class="fa fa-star"></i></span>
-      </div>
-      <h2>{{ restaurant.restaurant_name }}</h2>
-      <ul class="header-title-meta">
-        <li>{{ restaurant.restaurant_cuisines }}</li>
+  <div class="masthead u-cf">
+    <div class="row">
+      <a href="" class="generate-match" ng-click="generateMatch()"><i class="fa fa-refresh" ng-class="{'fa-spin': isActive}"></i></a>
+      <a href="/#/"><img src="../img/cinemplate-logo.svg" class="logo"/></a>
+      <ul class="navigation">
+        <li><a href='/#/'><i class="fa fa-map-marker"></i>&nbsp;{{ searchZip }}</a></li>
       </ul>
     </div>
   </div>
-</div>
 
-<div class="match-details u-cf">
-  <div class="row">
-    <div class="one-half column">
-      <div class="cta">
-        <a href="http://netflix.com" class="button"><i class="fa fa-film"></i>Add To Netflix Queue</a>
+<div >
+  <div class='match-info-bar u-cf'>
+    <div class="row">
+
+      <div class="one-half column header movie-bar animate-show" ng-show="contentLoaded">
+        <div class="star-rating">
+          <span class="star" ng-repeat="star in stars" ng-class="{selected: movie.rating > $index}"><i class="fa fa-star"></i></span>
+        </div>
+        <h2>{{ movie.movie_title }}</h2>
+        <ul class="header-title-meta">
+          <li>Animation</li>
+          <li>Adventure</li>
+          <li>Action</li>
+        </ul>
       </div>
-      <!-- Movie Mini Description-->  
-      <div class="summary-wrapper u-cf">
-        <img src="./img/kfp3.jpg" />
-        <p class="summary">
-          Continuing his "legendary adventues of awesomeness", Po must face two hugely epic, but different threats: one supernatural and the other a litte closer to his home.
-        </p>
+
+      <div class="one-half column header food-bar animate-show" ng-show="contentLoaded">
+        <div class="star-rating">
+          <span class="star" ng-repeat="star in stars" ng-class="{selected: restaurant.restaurant_yelp_rating > $index}"><i class="fa fa-star"></i></span>
+        </div>
+        <h2>{{ restaurant.restaurant_name }}</h2>
+        <ul class="header-title-meta">
+          <li>{{ restaurant.restaurant_cuisines }}</li>
+        </ul>
       </div>
-
-      <!-- Movie Cast/Crew-->
-      <table>
-        <tr>
-          <td>
-            <strong>Directors</strong>
-          </td>
-          <td>
-            Alessandro Carloni, Jennifer Yuh
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Writers</strong>
-          </td>
-          <td>
-            Jonathon Aibel, Glenn Berger
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Stars</strong>
-          </td>
-          <td>
-            Jack Black, Bryan Cranston, Dustin Hoffman
-          </td>
-        </tr>
-      </table>
-
     </div>
+  </div>
 
-    <div class="one-half column">
-      <div class="cta u-cf">
-        <a href="{{ restaurant.restaurant_url }}" target="_new" class="button"><i class="fa fa-cutlery  "></i>&nbsp;Place An Order</a>
+  <div class="match-details u-cf">
+    <div class="row">
+      <div class="one-half column animate-show" ng-show="contentLoaded">
+        <div class="cta">
+          <a href="{{ movie.movie_url }}" target="_new" class="button"><i class="fa fa-film"></i>Add To Netflix Queue</a>
+        </div>
+        <!-- Movie Mini Description-->  
+        <div class="summary-wrapper u-cf">
+          <img src="{{ movie.movie_image_url }}" />
+          <p class="summary fade">
+            {{ movie.movie_summary }}
+          </p>
+        </div>
+
       </div>
 
-      <!-- Food Mini Description-->  
-      <div class="summary-wrapper u-cf">
-        <img src="{{ restaurant.restaurant_image_url }}" />
-        <p class="summary">
-          {{ restaurant.restaurant_description }}
-        </p>
-      </div>
+      <div class="one-half column animate-show" ng-show="contentLoaded">
+        <div class="cta u-cf">
+          <a href="{{ restaurant.restaurant_url }}" target="_new" class="button"><i class="fa fa-cutlery"></i>&nbsp;Place An Order</a>
+        </div>
 
-      <!-- Food Cuisine and contact info-->
-      <table>
-        <tr>
-          <td>
-            <strong>Phone</strong>
-          </td>
-          <td>
-            <a href="tel:{{ restaurant.restaurant_phone }}">{{ restaurant.restaurant_phone }}</a>
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Address</strong>
-          </td>
-          <td>
-            {{ restaurant.restaurant_address }}
-          </td>
-        </tr>
-        <tr>
-          <td>
-            <strong>Serving</strong>
-          </td>
-          <td>
-            {{ restaurant.restaurant_cuisines }}
-          </td>
-        </tr>
-      </table>
+        <!-- Food Mini Description-->  
+        <div class="summary-wrapper u-cf">
+          <img src="{{ restaurant.restaurant_image_url }}" />
+          <p class="summary fade fade-restaurant">
+            {{ restaurant.restaurant_description }}
+          </p>
+          <p>
+            <a href="{{ restaurant.restaurant_url }}" target="_new">Read More</a>
+          </p>
+        </div>
+
+        <!-- Food Cuisine and contact info-->
+        <table>
+          <tr>
+            <td>
+              <strong>Phone</strong>
+            </td>
+            <td>
+              <a href="tel:{{ restaurant.restaurant_phone }}">{{ restaurant.restaurant_phone }}</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Address</strong>
+            </td>
+            <td>
+              {{ restaurant.restaurant_address }}
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <strong>Serving</strong>
+            </td>
+            <td>
+              {{ restaurant.restaurant_cuisines }}
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
   </div>
 </div>
-
-
-<!-- 
-<div class='movieData' ng-repeat='movie in movies'>
-<ul style="list-style-type:none;">
-  <li><strong>Title</strong></li>
-  <div class="title">{{ movie.movie_title }}</div>
-
-  <li><strong>Summary</strong></li>
-  <div class="summary">{{ movie.movie_summary }}</div>
-
-  <li><strong>Rating</strong></li>
-  <div class="rating">{{ movie.movie_rating }}</div>
-
-  <li><strong>Release Year</strong></li>
-  <div class="releaseYear">{{ movie.movie_release_year }}</div>
-
-  <li><strong>Director</strong></li>
-  <div class="director">{{ movie.movie_director }}</div>
-
-  <li><strong>Actor</strong></li>
-  <div class="actors">{{ movie.movie_actors }}</div>
-</ul>
-</div>
-
-
-<div class='yelpData' ng-repeat='restaurant in restaurants'>
-<ul style="list-style-type:none;">
-  <li><strong>Name</strong></li>
-  <div class="name">{{ restaurants.restaurants_name }}</div>
-
-  <li><strong>Description</strong></li>
-  <div class="description">{{ restaurants.restaurants_description }}</div>
-
-  <li><strong>Phone</strong></li>
-  <div class="phone">{{ restaurants.restaurants_phone }}</div>
-
-  <li><strong>Address</strong></li>
-  <div class="address">{{ restaurants.restaurants_address }}</div>
-
-  <li><strong>Zip</strong></li>
-  <div class="zip">{{ restaurants.restaurants_zip }}</div>
-
-  <li><strong>Hours</strong></li>
-  <div class="hours">{{ restaurants.restaurants_hours }}</div>
-
-  <li><strong>Price Range</strong></li>
-  <div class="priceRange">{{ restaurants.restaurants_price_range }}</div>
-
-  <li><strong>Image URL</strong></li>
-  <div class="imageURL">{{ restaurants.restaurants_image_url }}</div>
-
-  <li><strong>URL</strong></li>
-  <div class="url">{{ restaurants.restaurants_url }}</div>
-
-  <li><strong>Yelp Rating</strong></li>
-  <div class="yelpRating">{{ restaurants.restaurants_yelp_rating }}</div>
-
-  <li><strong>Yelp ID</strong></li>
-  <div class="yelpId">{{ restaurants.restaurants_yelp_id }}</div>
-</ul>
-</div> -->

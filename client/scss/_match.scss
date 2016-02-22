@@ -7,14 +7,32 @@
   width: 100%;
   height: 60px;
   line-height: 60px;
-  overflow: hidden;
-  border-bottom: 1px solid #000;
+  position: relative;
   .logo {
     float: left;
     height: 30px;
     position: relative;
     top: 14px;
-    opacity: 0.9;
+  }
+  .generate-match {
+    position: absolute;
+    text-align: center;
+    color: $primary_accent;
+    font-size: 3rem;
+    line-height: 58px !important;
+    left: 50%;
+    top: 25px;
+    width: 70px;
+    height: 70px;
+    margin-left: -35px;
+    border: 4px solid #222;
+    background: #fff;
+    z-index: 9;
+    border-radius: 100%;
+    &:hover {
+      color: #222;
+      background: $secondary_accent;
+    }
   }
   .navigation {
     color: white;
@@ -33,20 +51,21 @@
       letter-spacing: 1px;
       height: 60px;
       display: inline-block;
-      padding: 0 1em;
-      background: darken($primary_accent, 5);
-      background: $secondary_accent;
+      // padding: 0 1em;
+      // background: darken($primary_accent, 5);
+      // background: $secondary_accent;
       font-weight: 700;
-      color: $headers_bg;
+      color: #fff;
       border: none;
       &:hover {
-        color: #fff;
+        color: $secondary_accent;
       }
     }
   }
 }
 
 .match-info-bar {
+  border-top: 1px solid #000;
   background-color: $headers_bg;
   overflow: hidden;
   width: 100%;
@@ -55,6 +74,7 @@
   box-shadow: 0 3px 20px rgba(0, 0,0, 0.6);
   border-bottom: 1px solid #000;
   z-index: 2;
+  min-height: 115px;
   .header {
     h2 {
       margin: 0;
@@ -169,4 +189,23 @@
   .star.selected {
     color: $primary_accent;
   }
+}
+
+.fade {
+  position: relative;
+  height: 10em; /* exactly three lines */
+  overflow: hidden;
+}
+.fade-restaurant {
+  height: 6.5em;
+}
+.fade:after {
+  content: "";
+  text-align: right;
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70%;
+  height: 1.6em;
+  background: linear-gradient(to right, rgba(#474747, 0), rgba(#474747, 1) 50%);
 }
