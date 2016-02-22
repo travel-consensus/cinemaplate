@@ -196,7 +196,6 @@ routes.get('/api/match/:zip', function(req, res) {
     res.send(combinedResult)
   });
   pgClient.on('drain', function() {
-    console.log("drained");
     pgClient.end();
   });
   pgClient.connect();
