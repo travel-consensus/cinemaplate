@@ -2,7 +2,7 @@
   <div class="masthead u-cf">
     <div class="row">
       <a href="" class="generate-match" ng-click="generateMatch()"><i class="fa fa-refresh" ng-class="{'fa-spin': isActive}"></i></a>
-      <a href="/#/"><img src="../img/cinemplate-logo.svg" class="logo"/></a>
+      <a href="/#/"><img src="../img/cinemplate-logo.png" class="logo"/></a>
       <ul class="navigation">
         <li><a href='/#/'><i class="fa fa-map-marker"></i>&nbsp;{{ searchZip }}</a></li>
       </ul>
@@ -41,13 +41,16 @@
     <div class="row">
       <div class="one-half column animate-show" ng-show="contentLoaded">
         <div class="cta">
-          <a href="{{ movie.movie_url }}" target="_new" class="button"><i class="fa fa-film"></i>Add To Netflix Queue</a>
+          <a href="{{ movie.movie_url }}" target="_new" class="button"><i class="fa fa-film"></i>Watch On Netflix</a>
         </div>
         <!-- Movie Mini Description-->  
         <div class="summary-wrapper u-cf">
           <img src="{{ movie.movie_image_url }}" />
           <p class="summary fade">
             {{ movie.movie_summary }}
+          </p>
+          <p>
+            <a href="{{ movie.movie_url }}" target="_new">More Info</a>
           </p>
         </div>
 
@@ -65,7 +68,7 @@
             {{ restaurant.restaurant_description }}
           </p>
           <p>
-            <a href="{{ restaurant.restaurant_url }}" target="_new">Read More</a>
+            <a href="{{ restaurant.restaurant_url }}" target="_new">More Info</a>
           </p>
         </div>
 

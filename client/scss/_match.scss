@@ -33,6 +33,10 @@
       color: #222;
       background: $secondary_accent;
     }
+    &:active {
+      border-width: 0;
+      box-shadow: 0 0 20px #000;
+    }
   }
   .navigation {
     color: white;
