@@ -1,7 +1,7 @@
 # Contributing
 
 CinemaPlate employs a **Forking Workflow**.
-Details on thif flow can be found here:
+Details on this flow can be found here:
 https://www.atlassian.com/git/tutorials/comparing-workflows/forking-workflow
 
 ## Steps To Contributing
