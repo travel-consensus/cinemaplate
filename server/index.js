@@ -82,7 +82,6 @@ yelp.getFoodByZip(78749)
        var restName = data[i].name
        var restDescription = data[i].snippet_text
        var restPhone = data[i].display_phone
-       var restAddress = data[i].location.display_address
        var restStreetAddress = data[i].location.display_address[0]
        var restCity = data[i].location.city
        var restState = data[i].location.state_code
@@ -92,38 +91,41 @@ yelp.getFoodByZip(78749)
        var restYelpRating = data[i].rating
        var restYelpId = data[i].id
        var restCuisinesLength = data[i].categories.length
-       var restCuisines = []
+       var restCuisines = ''
        // var newRestaurantID
 
         // push categories into temp array
         for (var j=0;j<restCuisinesLength;j++){
-          restCuisines.push(data[i].categories[j][0])
+          restCuisines += (data[i].categories[j][0]) + ', '
         }
 
         console.log(i+1, ">>>", data[i].name)
         // console.log(restCuisines)
+        console.log(restCuisines.slice(0,-2))
+        restCuisines = restCuisines.slice(0,-2)
+        // if (restCuisines[restCuisines.length])
 
-      // pgClient = new pg.Client(pgConString)
-      //   pgClient.connect(function(err){
-      //     if (err){
-      //       return console.log('could not connect to postgres', err);
-      //     }
-      //     var sqlInsertRestaurants = 'INSERT INTO "restaurants" (restaurant_name,restaurant_description,restaurant_phone, restaurant_address,restaurant_zip,restaurant_image_url,restaurant_url, restaurant_yelp_rating, restaurant_yelp_id, restaurant_cuisines) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING restaurant_id'
+      pgClient = new pg.Client(pgConString)
+        pgClient.connect(function(err){
+          if (err){
+            return console.log('could not connect to postgres', err);
+          }
+          var sqlInsertRestaurants = 'INSERT INTO "restaurants" (restaurant_name,restaurant_description,restaurant_phone, restaurant_street_address, restaurant_city, restaurant_state, restaurant_zip, restaurant_image_url, restaurant_url, restaurant_yelp_rating, restaurant_yelp_id, restaurant_cuisines) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10, $11, $12) RETURNING restaurant_id'
           
-      //     pgClient.query(sqlInsertRestaurants, [restName, restDescription, restPhone, restAddress, restZipCode, restImageUrl, restEat24Url, restYelpRating, restYelpId,restCuisines], function (err, result){
-      //         if (err){                 
-      //           return console.log('error inserting restaurant.', err.message);
-      //         }
-      //         else {
+          pgClient.query(sqlInsertRestaurants, [restName, restDescription, restPhone, restStreetAddress, restCity, restState, restZipCode, restImageUrl, restEat24Url, restYelpRating, restYelpId, restCuisines], function (err, result){
+              if (err){                 
+                return console.log('error inserting restaurant.', err.message);
+              }
+              else {
 
-      //            if (result.rows[0].restaurant_id !== undefined){
-      //             var newRestaurantID = result.rows[0].restaurant_id
-      //             newRestaurantID
-      //            }
-      //             console.log("NEW RESTAURANT ID: ", newRestaurantID)
-      //         }
-      //       })
-      //     });
+                 if (result.rows[0].restaurant_id !== undefined){
+                  var newRestaurantID = result.rows[0].restaurant_id
+                  newRestaurantID
+                 }
+                  console.log("NEW RESTAURANT ID: ", newRestaurantID)
+              }
+            })
+          });
       })(i);
     }
   })
