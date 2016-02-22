@@ -12,10 +12,9 @@ var client = Yelp.createClient({
 
 var yelp = module.exports;
 
+//yelp only returns 20 results at a time, offset is necessary to get the next 20
 yelp.getFoodByZip = function(zipcode){
     var zip = zipcode;
-    
-    console.log('iam the zipcode, kookookachoo', zip)
     
     var call1 = client.search({
       actionlinks: true,
@@ -84,21 +83,17 @@ yelp.getFoodByZip = function(zipcode){
        //yelp API is not searchable by eat24_url - instead we have to do multiple calls, then filter for presence of 
        //eat24_url to determine delivery restaurants
        var eat24 = [];
-       // var eat24 = {}
+       
+       //iterate through the Promise.all array object
        for(var x = 0; x < 10; x++){
-
          var callX = res[x].businesses.filter(function(y){
            return y.eat24_url !== undefined;
          });
 
          eat24 = eat24.concat(callX);
 
-           // eat24['nomnom' + x] = res[x].businesses.filter(function(y){
-           //     return y.eat24_url !== undefined;
-           // })
        }
-       // console.log('eat24: ', eat24[0])
-       //should be an object with 10 properties, each containing the eat24_url results from each call
+
        return eat24;
    
      }).then(function(res){
