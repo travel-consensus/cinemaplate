@@ -32,8 +32,9 @@ movie.getMovieDB = function(redditObj){
             }).then(function(res){
                 return res.map(function(obj){
                    var movie = JSON.parse(obj);
-                   return {title:movie.results[0].title, summary: movie.results[0].overview, url: anObject[movie.results[0].title],
-                       img: 'https://image.tmdb.org/t/p/w185/' + movie.results[0].poster_path};
+                   var currMovie = movie.results[0];
+                   return {title: currMovie.title, summary: currMovie.overview, url: anObject[currMovie.title],
+                       img: 'https://image.tmdb.org/t/p/w185/' + currMovie.poster_path, rating: currMovie.vote_average/2, releaseDate: currMovie.release_date, genreArray: currMovie.genre_ids};
                })
             })
              
