@@ -7,6 +7,13 @@
 
     $ npm install
     $ npm start
+    
+### Local Development (DB)
+
+initdb cinemaDB
+postgres -D cinemaDB
+createdb development
+psql "dbname=development options=--search_path=public" -f db/cinemaplate.sql
 
 ## Tests
 
