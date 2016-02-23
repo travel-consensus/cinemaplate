@@ -56,9 +56,6 @@
       letter-spacing: 1px;
       height: 60px;
       display: inline-block;
-      // padding: 0 1em;
-      // background: darken($primary_accent, 5);
-      // background: $secondary_accent;
       font-weight: 700;
       color: #fff;
       border: none;
@@ -170,33 +167,6 @@
   }
 }
 
-
-.spinAnimation {
-  display: none;
-  color: white; 
-  position: relative; 
-  width: 65px;
-  height: 65px;
-  margin: auto;
-  text-align: center;
-  line-height: 82px; 
-  background: $primary_accent;
-  border-radius: 100%;
-  border: 4px solid #383838;
-  .i {
-    margin-top: 10px;
-  }
-  &:hover {
-    background-color: yellow;
-  }
-  &:disabled {
-    background-color: black;
-    .i {
-
-    }
-  }
-}
-
 .star-rating {
   float: right;
   .star {
@@ -208,14 +178,33 @@
   }
 }
 
+.animate-show {
+  opacity: 1;
+}
+
+.animate-show.ng-hide-add,
+.animate-show.ng-hide-remove {
+  transition: all linear 0.3s;
+}
+
+.animate-show.ng-hide {
+  opacity: 0;
+}
+
+.animate-show.ng-hide .generate-match {
+  background: $primary_accent;
+}
+
 .fade {
   position: relative;
-  height: 10em; /* exactly three lines */
+  height: 10em;
   overflow: hidden;
 }
+
 .fade-restaurant {
   height: 6.5em;
 }
+
 .fade:after {
   content: "";
   text-align: right;
