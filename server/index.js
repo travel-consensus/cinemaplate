@@ -4,7 +4,6 @@ var Path = require('path');
 var pg = require('pg');
 var sass = require('node-sass-endpoint');
 
-
 //
 // Get Postgres rolling.
 //
@@ -18,10 +17,6 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 var routes = express.Router();
-
-//still need to fold into routes.get
-
-
 
 //
 // Provide a browserified file at a specified path
@@ -63,7 +58,6 @@ routes.get('/api/match/:zip', function(req, res) {
 //
 var assetFolder = Path.resolve(__dirname, '../client');
 routes.use(express.static(assetFolder));
-
 
 if (process.env.NODE_ENV !== 'test') {
   //

@@ -1,3 +1,7 @@
+//
+// _variables.scss
+//
+
 // COLORS
 $primary_accent:    #c0392b;
 $secondary_accent:  #f8e71c;
@@ -5,31 +9,3 @@ $body_copy:         #e7e7e7;
 $body_bg:           #474747;
 $headers_bg:        #222222;
 $body_copy_light:   rgba(231, 231, 231, 0.5);
-
-// BUTTONS
-button, .button {
-  border: none;
-  background: $secondary_accent;
-  font-weight: 700;
-}
-
-h1, h2, h3, h4, h5, h6 {
-  font-weight: 400;
-}
-
-.one-half.column {
-  width: 40%;
-}
-
-.column {
-  margin-left: 20%;
-}
-
-a {
-  text-decoration: none;
-  color: inherit;
-  border-bottom: 1px solid;
-  &:hover {
-    color: $secondary_accent;
-  }
-}
