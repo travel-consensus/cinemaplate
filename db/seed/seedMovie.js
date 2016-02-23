@@ -25,7 +25,11 @@ var pgConConfig = {
 //   }
 // }
 var pgClient = new pg.Client(pgConConfig);
-
+    pgClient.connect(function(err){
+        if (err){
+             return console.log('could not connect to postgres', err);
+        }
+  })
 //
 // START Movie insert
 //
@@ -77,7 +81,7 @@ reddit.getMovies()
           }
 
           var runInsertMovieQuery = function(){
-            
+
             var sqlInsertMovie = 'INSERT INTO "movies" (movie_title, movie_summary, movie_url, movie_image_url, movie_rating, movie_release_date, movie_genres) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING movie_id'
             
             pgClient.query(sqlInsertMovie, [movieTitle, movieSummary, movieUrl, movieImageUrl, movieRating, movieReleaseDate, movieGenres], function (err, result){
