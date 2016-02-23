@@ -5,7 +5,6 @@ var pg = require('pg');
 //
 // Get PG config'd
 //
-var pgConString = '';
 var pgConConfig = {
   database: "development",
   host: "localhost",
@@ -25,11 +24,11 @@ var pgConConfig = {
 //   }
 // }
 var pgClient = new pg.Client(pgConConfig);
-    pgClient.connect(function(err){
-        if (err){
-             return console.log('could not connect to postgres', err);
-        }
-  })
+pgClient.connect(function(err){
+    if (err){
+         return console.log('could not connect to postgres', err);
+    }
+})
 //
 // START Movie insert
 //
