@@ -3,7 +3,7 @@ var express = require('express');
 var Path = require('path');
 var pg = require('pg');
 var sass = require('node-sass-endpoint');
-// require('../db/seed/seedMovie.js');
+require('../db/seed/seedMovie.js');
 require('../db/seed/seedRestaurant.js');
 
 
