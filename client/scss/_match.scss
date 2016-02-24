@@ -198,14 +198,16 @@
 .fade {
   position: relative;
   height: 10em;
-  overflow: hidden;
+  overflow: auto;
 }
 
 .fade-restaurant {
+  position: relative;
   height: 6.5em;
+  overflow: auto;
 }
 
-.fade:after {
+.fade-restaurant:after {
   content: "";
   text-align: right;
   position: absolute;
@@ -214,4 +216,22 @@
   width: 70%;
   height: 1.6em;
   background: linear-gradient(to right, rgba(#474747, 0), rgba(#474747, 1) 50%);
+  display: block;
 }
+
+.collapse-text-toggle {
+    font-size: 0.9em;
+    color: #ccc;
+    cursor: pointer;
+}
+.collapse-text-toggle:hover {
+    color: #222222;
+}
+.collapse-text-toggle:before {
+    content: '\00a0(';
+}
+.collapse-text-toggle:after {
+    content: ')';
+}
+
+
