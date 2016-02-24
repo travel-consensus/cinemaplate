@@ -51,6 +51,8 @@ routes.get('/api/match/restaurant/:zip', function(request, response) {
   var zip = req.params.zip;
 
   // Add restaurants for the submitted zip code to the database.
+  // This is async with querying or restaurants, probably won't
+  // populate restaurants before first query for zipcode
   Restaurants.addRestaurantsForZip(pgConConfig, zip);
 
   var slimZip = zip.slice(0, 3);
