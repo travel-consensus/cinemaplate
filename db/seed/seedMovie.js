@@ -51,12 +51,10 @@ reddit.getMovies()
           var movieReleaseDate = movieData[k].releaseDate
           var movieGenresArray = movieData[k].genreArray
           var movieGenres = ''
+          var movieShortlink = movieData[k].shortlink
           // console.log(movieGenresArray.length)
           if (movieGenresArray.length>0) {
             for (var g=0;g<movieGenresArray.length;g++){
-              (function(){
-
-              })(g)
               var thisGenreID = movieData[k].genreArray[g]
               // console.log("GENRE ID: ", thisGenreID)
               var sqlGetMovieGenre = 'SELECT genre_name FROM "genres" WHERE genre_moviedb_id=' + thisGenreID
@@ -81,23 +79,16 @@ reddit.getMovies()
 
           var runInsertMovieQuery = function(){
 
-            var sqlInsertMovie = 'INSERT INTO "movies" (movie_title, movie_summary, movie_url, movie_image_url, movie_rating, movie_release_date, movie_genres) VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING movie_id'
+            var sqlInsertMovie = 'INSERT INTO "movies" (movie_title, movie_summary, movie_url, movie_image_url, movie_rating, movie_release_date, movie_genres, movie_shortlink) VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING movie_id'
             
-            pgClient.query(sqlInsertMovie, [movieTitle, movieSummary, movieUrl, movieImageUrl, movieRating, movieReleaseDate, movieGenres], function (err, result){
+            pgClient.query(sqlInsertMovie, [movieTitle, movieSummary, movieUrl, movieImageUrl, movieRating, movieReleaseDate, movieGenres, movieShortlink], function (err, result){
                 if (err){
                   return console.log('error inserting movie', err);
                 }
-                else {
-
-                  console.log("Adding movie >>>", movieTitle)
-                  var newMovieID = result.rows[0].movie_id
-                   newMovieID
-                }
-                  console.log("NEW MOVIE ID: ", newMovieID)
               })
           }
           // });
-        })(k);
+        })();
       }
       console.log(movieData)
       return;
