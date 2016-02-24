@@ -3,11 +3,6 @@ var express = require('express');
 var Path = require('path');
 var pg = require('pg');
 var sass = require('node-sass-endpoint');
-<<<<<<< HEAD
-require('../db/seed/seedMovie.js');
-require('../db/seed/seedRestaurant.js');
-=======
->>>>>>> (feat) implement untested restaurant addition when a zipcode has been added.
 
 
 var pgConConfig;
