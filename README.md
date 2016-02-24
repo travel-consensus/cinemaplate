@@ -1,6 +1,6 @@
 # CinemaPlate
 
-[![Stories in Ready](https://badge.waffle.io/nodedoubt/cinemaplate.png?label=ready&title=Ready)](http://waffle.io/nodedoubt/cinemaplate)
+[![Stories in Ready](https://badge.waffle.io/travel-consensus/cinemaplate.svg?label=ready&title=Ready)](http://waffle.io/travel-consensus/cinemaplate)
 [![Build Status](https://travis-ci.org/nodedoubt/cinemaplate.svg?branch=master)](https://travis-ci.org/nodedoubt/cinemaplate)
 
 ## Getting Started
