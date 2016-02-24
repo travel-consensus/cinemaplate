@@ -4,7 +4,6 @@ var yelp = require('./helpers/yelpHelp');
 //
 // Get PG config'd
 //
-var pgConString = '';
 var pgConConfig = {
   database: "development",
   host: "localhost",

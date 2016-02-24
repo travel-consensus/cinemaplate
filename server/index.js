@@ -7,28 +7,17 @@ var sass = require('node-sass-endpoint');
 require('../db/seed/seedRestaurant.js');
 
 
-//
-// Get Postgres rolling.
-//
-var pgConString = '';
-var pgConConfig = {
-  database: "development",
-  host: "localhost",
-  port: 5432
+
+var pgConConfig;
+if (process.env.NODE_ENV === 'production') {
+  pgConConfig = process.env.DATABASE_URL;
+} else {
+  pgConConfig = {
+    database: "development",
+    host: "localhost",
+    port: 5432
+  }
 }
-
-
-// if (process.env.NODE_ENV !== 'production') {
-//   // If trying to connect to DB remotely (ie, dev environment)
-//   // we need to add the ssl flag.
-//   pgConString = process.env.DATABASE_URL + '?ssl=false';
-// } else {
-//   pgConConfig = {
-//     database: "development",
-//     host: "localhost",
-//     port: 5432
-//   }
-// }
 
 var routes = express.Router();
 
