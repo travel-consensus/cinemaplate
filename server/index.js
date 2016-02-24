@@ -48,7 +48,7 @@ routes.get('/api/match/movie', function(request, response) {
 */
 var Restaurants = require('../db/restaurantModel');
 routes.get('/api/match/restaurant/:zip', function(request, response) {
-  var zip = req.params.zip;
+  var zip = request.params.zip;
 
   // Add restaurants for the submitted zip code to the database.
   // This is async with querying or restaurants, probably won't
