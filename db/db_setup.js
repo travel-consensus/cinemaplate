@@ -30,4 +30,5 @@ var config = {
 // require('../db/seed/seedRestaurant.js');
 
 var Restaurants = require('./restaurantModel');
-Restaurants(78749);
+console.log('restaurants:", restaurants')
+Restaurants(23112);

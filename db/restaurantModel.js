@@ -32,7 +32,6 @@ var restaurantsByZip = function(pgConConfig, zipcode) {
           listing.cuisines += (restaurant.categories[j][0]) + ', '
         }
         listing.cuisines = listing.cuisines.slice(0,-2)
-        restCuisines = restCuisines.slice(0,-2)
 
         pg.connect(pgConConfig, function(err, client, done) {
           if (err){
