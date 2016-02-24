@@ -16,6 +16,18 @@ if (process.env.NODE_ENV === 'production') {
   }
 }
 
+var pgConConfig;
+if (process.env.NODE_ENV === 'production') {
+  pgConConfig = process.env.DATABASE_URL;
+} else {
+  pgConConfig = {
+    database: "development",
+    host: "localhost",
+    port: 5432
+  }
+}
+
+var routes = express.Router();
 
 //
 // Provide a browserified file at a specified path
