@@ -27,4 +27,4 @@ var config = {
 }
 
 require('../db/seed/seedMovie.js');
-// require('../db/seed/seedRestaurant.js');
+require('../db/seed/seedRestaurant.js');
