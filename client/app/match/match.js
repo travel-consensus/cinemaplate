@@ -33,7 +33,7 @@ angular.module('cinePlate.match', [])
   $scope.searchZip = $routeParams.zip;
   $scope.restaurant = {};
   $scope.movie = {};
-  console.log("$scope",$scope);
+
   $scope.generateMatch = function () {
     $scope.contentLoaded = false;
     $scope.isActive = !$scope.isActive;
@@ -46,11 +46,9 @@ angular.module('cinePlate.match', [])
           $scope.restaurant = response.restaurant;
         }
         
-        
         // generate new movie unless lockMovie is true
         if(!$scope.lockMovie) {
           $scope.movie = response.movie;
-          console.log("lockMovie", $scope.lockMovie)
         };
         $scope.contentLoaded = true;
         $scope.isActive = !$scope.isActive;
