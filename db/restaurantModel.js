@@ -1,6 +1,7 @@
 var pg = require('pg');
 var yelp = require('./seed/helpers/yelpHelp');
 
+<<<<<<< HEAD
 // START Restaurant insert
 var restaurantsByZip = function(pgConConfig, zipcode) {
   yelp.getFoodByZip(zipcode)
