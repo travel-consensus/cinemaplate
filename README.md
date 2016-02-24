@@ -1,7 +1,7 @@
 # CinemaPlate
 
 [![Stories in Ready](https://badge.waffle.io/travel-consensus/cinemaplate.svg?label=ready&title=Ready)](http://waffle.io/travel-consensus/cinemaplate)
-[![Build Status](https://travis-ci.org/nodedoubt/cinemaplate.svg?branch=master)](https://travis-ci.org/nodedoubt/cinemaplate)
+[![Build Status](https://travis-ci.org/travel-consensus/cinemaplate.svg?branch=master)](https://travis-ci.org/travel-consensus/cinemaplate)
 
 ## Getting Started
 
