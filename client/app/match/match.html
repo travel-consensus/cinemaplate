@@ -18,6 +18,9 @@
         <div class="star-rating">
           <span class="star" ng-repeat="star in stars" ng-class="{selected: movie.movie_rating > $index}"><i class="fa fa-star"></i></span>
         </div>
+        <div class="lock">
+          <input type="image" src="./img/locked.png" ng-click="movieLock()" />
+        </div>
         <h2><a href="{{ movie.movie_url }}" target="_new">{{ movie.movie_title }}</a></h2>
         <ul class="header-title-meta">
           <li>{{ movie.movie_genres }}</li>
