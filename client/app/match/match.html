@@ -17,7 +17,11 @@
       <div class="one-half column header movie-bar animate-show" ng-show="contentLoaded">
         <div class="star-rating">
           <span class="star" ng-repeat="star in stars" ng-class="{selected: movie.movie_rating > $index}"><i class="fa fa-star"></i></span>
+          <div class="lock">
+            <input type="image" height="24" width="24" src="{{movieLockImage}}" ng-click="movieLock()" />
+          </div>
         </div>
+
         <h2><a href="{{ movie.movie_url }}" target="_new">{{ movie.movie_title }}</a></h2>
         <ul class="header-title-meta">
           <li>{{ movie.movie_genres }}</li>
@@ -27,6 +31,9 @@
       <div class="one-half column header food-bar animate-show" ng-show="contentLoaded">
         <div class="star-rating">
           <span class="star" ng-repeat="star in stars" ng-class="{selected: restaurant.restaurant_yelp_rating > $index}"><i class="fa fa-star"></i></span>
+          <div class="lock">
+            <input type="image" height="24" width="24" src="{{restaurantLockImage}}" ng-click="restaurantLock()" />
+          </div>
         </div>
         <h2><a href="{{ restaurant.restaurant_url }}" class="iframe" target="_new">{{ restaurant.restaurant_name }}</a></h2>
         <ul class="header-title-meta">
