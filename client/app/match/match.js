@@ -12,11 +12,15 @@ angular.module('cinePlate.match', [])
   }
   
   // set initial state
+  $scope.restaurantLockImage = './img/unlocked.png'
   $scope.movieLockImage = './img/unlocked.png'
 
   // function that toggles lockRestaurant
   $scope.restaurantLock = function () {
     $scope.lockRestaurant = !$scope.lockRestaurant
+    if($scope.lockRestaurant) {
+      $scope.restaurantLockImage = './img/locked.png'
+    } else { $scope.restaurantLockImage = './img/unlocked.png' }
   }
   // function that toggles lockMovie
   $scope.movieLock = function () {
@@ -40,7 +44,6 @@ angular.module('cinePlate.match', [])
         // generate new restaurant unless lockRestaurant is true
         if(!$scope.lockRestaurant) {
           $scope.restaurant = response.restaurant;
-          // $scope.lockRestaurant = true;
         }
         
         
@@ -48,7 +51,6 @@ angular.module('cinePlate.match', [])
         if(!$scope.lockMovie) {
           $scope.movie = response.movie;
           console.log("lockMovie", $scope.lockMovie)
-          // $scope.lockMovie = true;
         };
         $scope.contentLoaded = true;
         $scope.isActive = !$scope.isActive;
