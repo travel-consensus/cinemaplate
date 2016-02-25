@@ -43,13 +43,29 @@ angular.module( "ngAutocomplete", [])
         //reinitializes on every change of the options provided
         var newAutocomplete = function() {
           scope.gPlace = new google.maps.places.Autocomplete(element[0], opts);
+
           google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
-            scope.$apply(function() {
-//              if (scope.details) {
-                scope.details = scope.gPlace.getPlace();
-//              }
-              scope.ngAutocomplete = element.val();
-            });
+
+            console.log('extracted zipcode:', scope.gPlace.getPlace().address_components[7].short_name);
+            var extractedZip = scope.gPlace.getPlace().address_components[7].short_name;
+
+            // scope.$apply(function() {
+            //   scope.ngAutoComplete = element.val();
+            // })
+
+            var autocompleteInput = angular.element('#autocomplete')
+
+            autocompleteInput.scope().zip = element.val();
+
+            autocompleteInput.submit();
+
+
+            // scope.$apply(function() {
+            //  if (!scope.details) {
+            //     scope.details = scope.gPlace.getPlace();
+            //  }
+            //   scope.ngAutocomplete = element.val();
+            // });
           })
         }
         newAutocomplete()
@@ -64,6 +80,6 @@ angular.module( "ngAutocomplete", [])
           element[0].value = '';
           scope.ngAutocomplete = element.val();
         }, true);
-      }
+      } // link
     };
   });
