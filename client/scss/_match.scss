@@ -49,7 +49,11 @@
     li {
       display: inline;
       margin-left: 2em;
+      &.last {
+        margin-left:-.1em;
+      }
     }
+
     a {
       text-align: center;
       text-decoration: none;
