@@ -10,6 +10,7 @@ angular.module('cinePlate.splash', ["ngAutocomplete"])
     if(limit_5){
       console.log('Redirect to extracted zipcode:', limit_5)
       $location.path('/' + limit_5);
+      $scope.$apply()
     } else {
     	console.log('no redirect; $scope.zip:', $scope.zip);
     }

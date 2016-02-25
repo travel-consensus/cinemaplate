@@ -45,27 +45,19 @@ angular.module( "ngAutocomplete", [])
           scope.gPlace = new google.maps.places.Autocomplete(element[0], opts);
 
           google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
+            console.log('extracted place:', scope.gPlace.getPlace())
 
-            console.log('extracted zipcode:', scope.gPlace.getPlace().address_components[7].short_name);
-            var extractedZip = scope.gPlace.getPlace().address_components[7].short_name;
-
-            // scope.$apply(function() {
-            //   scope.ngAutoComplete = element.val();
-            // })
+            var extractedZip;
+            var addrComponents = scope.gPlace.getPlace().address_components;
+            addrComponents.forEach(function(addrCmpnt) {
+              if (addrCmpnt.types[0] === 'postal_code')
+                extractedZip = addrCmpnt.short_name
+            })
 
             var autocompleteInput = angular.element('#autocomplete')
-
             autocompleteInput.scope().zip = String(extractedZip);
 
-            autocompleteInput.scope().getZip();
-
-
-            // scope.$apply(function() {
-            //  if (!scope.details) {
-            //     scope.details = scope.gPlace.getPlace();
-            //  }
-            //   scope.ngAutocomplete = element.val();
-            // });
+            // autocompleteInput.scope().getZip();
           })
         }
         newAutocomplete()
