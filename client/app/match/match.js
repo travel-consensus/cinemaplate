@@ -33,9 +33,15 @@ angular.module('cinePlate.match', [])
   $scope.searchZip = $routeParams.zip;
   $scope.restaurant = {};
   $scope.movie = {};
+  $scope.collapsed = false;
+
+  $scope.toggle = function() {
+     $scope.collapsed = !$scope.collapsed;
+  };
 
   $scope.generateMatch = function () {
     $scope.contentLoaded = false;
+    $scope.collapsed = false;
     $scope.isActive = !$scope.isActive;
     Matches.generateMatch($routeParams.zip)
       .then(function (response) {
@@ -58,7 +64,6 @@ angular.module('cinePlate.match', [])
       });
   };
   $scope.generateMatch();
-
 }])
 
 .directive('ddTextCollapse', ['$compile', function($compile) {
@@ -69,12 +74,12 @@ angular.module('cinePlate.match', [])
         link: function(scope, element, attrs) {
 
             // start collapsed
-            scope.collapsed = false;
+            // $scope.collapsed = false;
 
             // create the function to toggle the collapse
-            scope.toggle = function() {
-                scope.collapsed = !scope.collapsed;
-            };
+            // scope.toggle = function() {
+            //     scope.collapsed = !scope.collapsed;
+            // };
 
             // wait for changes on the text
             attrs.$observe('ddTextCollapseText', function(text) {
@@ -92,7 +97,7 @@ angular.module('cinePlate.match', [])
                     var secondSpan = $compile('<span ng-if="collapsed">' + secondPart + '</span>')(scope);
                     var moreIndicatorSpan = $compile('<span ng-if="!collapsed">... </span>')(scope);
                     var lineBreak = $compile('<br ng-if="collapsed">')(scope);
-                    var toggleButton = $compile('<span class="collapse-text-toggle" ng-click="toggle()">{{collapsed ? "less" : "Click for more"}}</span>')(scope);
+                    var toggleButton = $compile('<span class="collapse-text-toggle" ng-click="toggle()">{{collapsed ? "less" : "\nClick for more"}}</span>')(scope);
 
                     // remove the current contents of the element
                     // and add the new ones we created
