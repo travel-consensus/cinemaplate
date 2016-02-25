@@ -21,7 +21,7 @@ if (process.env.NODE_ENV === 'production') {
 // Provide a browserified file at a specified path
 //
 var routes = express.Router();
-browserify.settings.production('minify', 'false');
+browserify.settings.production('minify', false);
 routes.get('/app-bundle.js', browserify('./client/app/app.js'));
 routes.get('/css/app-bundle.css', sass.serve('./client/scss/app.scss'));
 
