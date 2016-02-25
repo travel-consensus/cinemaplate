@@ -3,7 +3,8 @@ var yelp = require('./seed/helpers/yelpHelp');
 
 // START Restaurant insert
 var restaurantsByZip = function(pgConConfig, zipcode) {
-  yelp.getFoodByZip(zipcode)
+  // returning here to make promise for index.js
+  return yelp.getFoodByZip(zipcode)
     .then(function(data){
       //loop through each restaurant and get restaurant details
       console.log("Total Restaurants Returned: ", data.length)

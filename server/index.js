@@ -48,11 +48,12 @@ routes.get('/api/match/movie', function(request, response) {
   a random movie.
 */
 var Restaurants = require('../db/restaurantModel');
-routes.get('/api/match/restaurant/:zip', function(request, response) {
+// Test code for separating restaurants from movies
+/* routes.get('/api/match/restaurant/:zip', function(request, response) {
   var zip = request.params.zip;
 
   // Add restaurants for the submitted zip code to the database.
-  // This is async with querying or restaurants, probably won't
+  // This is async with querying of restaurants, probably won't
   // populate restaurants before first query for zipcode
   Restaurants.addRestaurantsForZip(pgConConfig, zip);
 
@@ -68,7 +69,7 @@ routes.get('/api/match/restaurant/:zip', function(request, response) {
       response.send(result.rows[0]);
     });   
   })
-})
+}) */
 
 
 //
@@ -82,27 +83,28 @@ routes.get('/api/match/:zip', function(req, res) {
   // Add restaurants for the submitted zip code to the database.
   // This is async with querying or restaurants, probably won't
   // populate restaurants before first query for zipcode
-  Restaurants.addRestaurantsForZip(pgConConfig, zip);
-
-  var combinedResult = {};
-  var pgClient = new pg.Client(pgConConfig);
-  var restaurantQuery = pgClient.query("SELECT * FROM restaurants WHERE restaurant_zip LIKE '" + slimZip + "%' order by random() limit 1", function(err, result){
-    return result;
-  });
-  restaurantQuery.on('end', function(result) {
-    combinedResult.restaurant = result.rows[0];
-  });
-  var movieQuery = pgClient.query("SELECT * FROM movies order by random() limit 1", function(err, result){
-    return result;
-  });
-  movieQuery.on('end', function(result) {
-    combinedResult.movie = result.rows[0];
-    res.send(combinedResult)
-  });
-  pgClient.on('drain', function() {
-    pgClient.end();
-  });
-  pgClient.connect();
+  Restaurants.addRestaurantsForZip(pgConConfig, zip)
+  .then(function() {
+    var combinedResult = {};
+    var pgClient = new pg.Client(pgConConfig);
+    var restaurantQuery = pgClient.query("SELECT * FROM restaurants WHERE restaurant_zip LIKE '" + slimZip + "%' order by random() limit 1", function(err, result){
+      return result;
+    });
+    restaurantQuery.on('end', function(result) {
+      combinedResult.restaurant = result.rows[0];
+    });
+    var movieQuery = pgClient.query("SELECT * FROM movies order by random() limit 1", function(err, result){
+      return result;
+    });
+    movieQuery.on('end', function(result) {
+      combinedResult.movie = result.rows[0];
+      res.send(combinedResult)
+    });
+    pgClient.on('drain', function() {
+      pgClient.end();
+    });
+    pgClient.connect();
+  })
 });
 
 
