@@ -67,4 +67,3 @@ angular.module( "ngAutocomplete", [])
       }
     };
   });
-  
