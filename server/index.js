@@ -3,40 +3,72 @@ var express = require('express');
 var Path = require('path');
 var pg = require('pg');
 var sass = require('node-sass-endpoint');
-require('../db/seed/seedMovie.js');
-require('../db/seed/seedRestaurant.js');
 
 
-//
-// Get Postgres rolling.
-//
-var pgConString = '';
-var pgConConfig = {
-  database: "development",
-  host: "localhost",
-  port: 5432
+var pgConConfig;
+if (process.env.NODE_ENV === 'production') {
+  pgConConfig = process.env.DATABASE_URL;
+} else {
+  pgConConfig = {
+    database: "development",
+    host: "localhost",
+    port: 5432
+  }
 }
 
-
-// if (process.env.NODE_ENV !== 'production') {
-//   // If trying to connect to DB remotely (ie, dev environment)
-//   // we need to add the ssl flag.
-//   pgConString = process.env.DATABASE_URL + '?ssl=false';
-// } else {
-//   pgConConfig = {
-//     database: "development",
-//     host: "localhost",
-//     port: 5432
-//   }
-// }
-
-var routes = express.Router();
 
 //
 // Provide a browserified file at a specified path
 //
+var routes = express.Router();
 routes.get('/app-bundle.js', browserify('./client/app/app.js'));
 routes.get('/css/app-bundle.css', sass.serve('./client/scss/app.scss'));
+
+
+/*
+  Serve a random movie
+*/
+routes.get('/api/match/movie', function(request, response) {
+  pg.connect(pgConConfig, function(error, client, done) {
+    client.query("SELECT * FROM movies order by random() limit 1", function(err, result){
+      if (error) {
+        console.log('ERROR fetching movie from database.');
+        response.status(500).send('Error fetching movie');
+      }
+
+      console.log('reporting random movie result:', result);
+      response.send(result.rows[0]);
+    });
+  })
+})
+
+/*
+  Add restaurants from this zipcode to the database and respond with
+  a random movie.
+*/
+var Restaurants = require('../db/restaurantModel');
+routes.get('/api/match/restaurant/:zip', function(request, response) {
+  var zip = request.params.zip;
+
+  // Add restaurants for the submitted zip code to the database.
+  // This is async with querying or restaurants, probably won't
+  // populate restaurants before first query for zipcode
+  Restaurants.addRestaurantsForZip(pgConConfig, zip);
+
+  var slimZip = zip.slice(0, 3);
+  pg.connect(pgConConfig, function(error, client, done) {
+    client.query("SELECT * FROM restaurants WHERE restaurant_zip LIKE '" + slimZip + "%' order by random() limit 1", function(err, result){
+      if (error) {
+        console.log('ERROR fetching restaurant from database.');
+        response.status(500).send('Error fetching restaurant');
+      }
+
+      console.log('reporting random restaurant result:', result);
+      response.send(result.rows[0]);
+    });   
+  })
+})
+
 
 //
 // Match endpoint to match movie genres with cuisines
@@ -45,6 +77,11 @@ routes.get('/api/match/:zip', function(req, res) {
   var zip = req.params.zip;
   // Get first 3 zip digits for SQL "like" query.
   var slimZip = zip.slice(0,3);
+
+  // Add restaurants for the submitted zip code to the database.
+  // This is async with querying or restaurants, probably won't
+  // populate restaurants before first query for zipcode
+  Restaurants.addRestaurantsForZip(pgConConfig, zip);
 
   var combinedResult = {};
   var pgClient = new pg.Client(pgConConfig);
@@ -66,6 +103,8 @@ routes.get('/api/match/:zip', function(req, res) {
   });
   pgClient.connect();
 });
+
+
 
 //
 // Static assets (html, etc.)

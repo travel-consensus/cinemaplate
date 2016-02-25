@@ -26,6 +26,7 @@ var restaurantsByZip = function(pgConConfig, zipcode) {
           cuisines: ''
         }
 
+        console.log('restaurant cuisine categories:', restaurant.categories);
         // push categories into temp array
         for (var j=0;j<listing.cuisinesLength;j++){
           listing.cuisines += (restaurant.categories[j][0]) + ', '

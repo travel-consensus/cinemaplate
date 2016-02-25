@@ -79,7 +79,7 @@ reddit.getMovies()
 
           var runInsertMovieQuery = function(){
 
-            var sqlInsertMovie = 'INSERT INTO "movies" (movie_title, movie_summary, movie_url, movie_image_url, movie_rating, movie_release_date, movie_genres, movie_shortlink, movie_largeImage_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING movie_id'
+            var sqlInsertMovie = 'INSERT INTO "movies" (movie_title, movie_summary, movie_url, movie_image_url, movie_rating, movie_release_date, movie_genres, movie_shortlink, movie_large_image_url) VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9) RETURNING movie_id'
             
             pgClient.query(sqlInsertMovie, [movieTitle, movieSummary, movieUrl, movieImageUrl, movieRating, movieReleaseDate, movieGenres, movieShortlink, movieLargeImage], function (err, result){
                 if (err){
