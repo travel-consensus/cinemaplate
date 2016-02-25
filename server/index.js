@@ -77,21 +77,12 @@ var Restaurants = require('../db/restaurantModel');
 //
 routes.get('/api/match/:zip', function(req, res) {
   var zip = req.params.zip;
-  // Check if zip is in the database. If not, addRestaurants. If so, go ahead with restaurant query.
 
-
-
-  // Get first 3 zip digits for SQL "like" query.
-  var slimZip = zip.slice(0,3);
-
-  // Add restaurants for the submitted zip code to the database.
-  // This is async with querying of restaurants, probably won't
-  // populate restaurants before first query for zipcode
-  Restaurants.addRestaurantsForZip(pgConConfig, zip)
-  .then(function() {
+  // function to query db and return results
+  var firstMatch = function() {
     var combinedResult = {};
     var pgClient = new pg.Client(pgConConfig);
-    var restaurantQuery = pgClient.query("SELECT * FROM restaurants WHERE restaurant_zip LIKE '" + slimZip + "%' order by random() limit 1", function(err, result){
+    var restaurantQuery = pgClient.query("SELECT * FROM restaurants WHERE restaurant_zip LIKE '" + zip + "%' order by random() limit 1", function(err, result){
       return result;
     });
     restaurantQuery.on('end', function(result) {
@@ -108,7 +99,20 @@ routes.get('/api/match/:zip', function(req, res) {
       pgClient.end();
     });
     pgClient.connect();
-  })
+  }
+  // Check if zip is in the database. If not, addRestaurants. If so, go ahead with restaurant query.
+
+
+
+
+  // Get first 3 zip digits for SQL "like" query.
+  var slimZip = zip.slice(0,3);
+
+  // Add restaurants for the submitted zip code to the database.
+  // This is async with querying of restaurants, probably won't
+  // populate restaurants before first query for zipcode
+  Restaurants.addRestaurantsForZip(pgConConfig, zip)
+  .then(firstMatch)
 });
 
 
