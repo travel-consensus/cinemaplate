@@ -225,7 +225,7 @@
     cursor: pointer;
 }
 .collapse-text-toggle:hover {
-    color: #222222;
+    color: $secondary_accent;
 }
 .collapse-text-toggle:before {
     content: '\00a0(';
