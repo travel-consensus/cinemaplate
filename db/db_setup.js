@@ -26,9 +26,5 @@ var config = {
 	}
 }
 
-// require('../db/seed/seedMovie.js');
-// require('../db/seed/seedRestaurant.js');
-
-var Restaurants = require('./restaurantModel');
-console.log('restaurants:", restaurants')
-Restaurants(23112);
+require('../db/seed/seedMovie.js');
+require('../db/seed/seedRestaurant.js');
