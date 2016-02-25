@@ -55,9 +55,9 @@ angular.module( "ngAutocomplete", [])
 
             var autocompleteInput = angular.element('#autocomplete')
 
-            autocompleteInput.scope().zip = element.val();
+            autocompleteInput.scope().zip = String(extractedZip);
 
-            autocompleteInput.submit();
+            autocompleteInput.scope().getZip();
 
 
             // scope.$apply(function() {
