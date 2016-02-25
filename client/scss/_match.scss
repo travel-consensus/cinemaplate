@@ -238,8 +238,18 @@
     content: ')';
 }
 
-.lock {
-  margin-bottom: 0px;
+svg:hover .unlocked{
+  fill: #f8e71c;
 }
 
+svg:hover .locked{
+  fill:#9f2f24;
+}
 
+svg#unlocked, svg#locked {
+  cursor: pointer;
+  position: absolute;
+  margin-left: -3%;
+  margin-top: 1%;
+  outline: none;
+}

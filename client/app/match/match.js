@@ -11,23 +11,13 @@ angular.module('cinePlate.match', [])
     rating: 4
   }
   
-  // set initial state
-  $scope.restaurantLockImage = './img/unlocked.png'
-  $scope.movieLockImage = './img/unlocked.png'
-
   // function that toggles lockRestaurant
   $scope.restaurantLock = function () {
     $scope.lockRestaurant = !$scope.lockRestaurant
-    if($scope.lockRestaurant) {
-      $scope.restaurantLockImage = './img/locked.png'
-    } else { $scope.restaurantLockImage = './img/unlocked.png' }
   }
   // function that toggles lockMovie
   $scope.movieLock = function () {
     $scope.lockMovie = !$scope.lockMovie
-    if($scope.lockMovie) {
-      $scope.movieLockImage = './img/locked.png'
-    } else { $scope.movieLockImage = './img/unlocked.png' }
   }
 
   $scope.searchZip = $routeParams.zip;
