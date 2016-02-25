@@ -33,8 +33,11 @@ angular.module('cinePlate.match', [])
   $scope.searchZip = $routeParams.zip;
   $scope.restaurant = {};
   $scope.movie = {};
+
+  //start movie descrioption collapsed
   $scope.collapsed = false;
 
+  //function to toggle the movie description moved to global scope
   $scope.toggle = function() {
      $scope.collapsed = !$scope.collapsed;
   };
@@ -72,14 +75,6 @@ angular.module('cinePlate.match', [])
         restrict: 'A',
         scope: true,
         link: function(scope, element, attrs) {
-
-            // start collapsed
-            // $scope.collapsed = false;
-
-            // create the function to toggle the collapse
-            // scope.toggle = function() {
-            //     scope.collapsed = !scope.collapsed;
-            // };
 
             // wait for changes on the text
             attrs.$observe('ddTextCollapseText', function(text) {
