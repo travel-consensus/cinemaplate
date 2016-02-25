@@ -8,7 +8,6 @@ angular.module('cinePlate.splash', ["ngAutocomplete"])
 	  var limit_5 = Number($scope.zip.match(/\b\d{5}\b/g))
     
     if(limit_5){
-      console.log('Redirect to extracted zipcode:', limit_5)
       $location.path('/' + limit_5);
       $scope.$apply()
     } else {

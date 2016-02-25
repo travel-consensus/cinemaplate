@@ -45,8 +45,6 @@ angular.module( "ngAutocomplete", [])
           scope.gPlace = new google.maps.places.Autocomplete(element[0], opts);
 
           google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
-            console.log('extracted place:', scope.gPlace.getPlace())
-
             var extractedZip;
             var addrComponents = scope.gPlace.getPlace().address_components;
             addrComponents.forEach(function(addrCmpnt) {
@@ -56,8 +54,6 @@ angular.module( "ngAutocomplete", [])
 
             var autocompleteInput = angular.element('#autocomplete')
             autocompleteInput.scope().zip = String(extractedZip);
-
-            // autocompleteInput.scope().getZip();
           })
         }
         newAutocomplete()
