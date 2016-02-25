@@ -6,11 +6,8 @@ var match = require('./match/match.js');
 var splash = require('./splash/splash.js');
 var services = require('./services/services.js');
 require('./fancybox/jquery.fancybox.js');
-<<<<<<< f397976b2c62551b2ccd40d33dc2ebdfba304cad
 require('./fancybox/jquery.fancybox-media.js');
-=======
 require('./splash/ngAutocomplete.js');
->>>>>>> (feat) google geocoding
 
 // Instantiate our app instance and add ngRoute as a dependecy via
 // the 'angular-route' npm module. (ngRoute === angular-route)
