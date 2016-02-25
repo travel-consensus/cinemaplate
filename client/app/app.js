@@ -7,6 +7,7 @@ var splash = require('./splash/splash.js');
 var services = require('./services/services.js');
 require('./fancybox/jquery.fancybox.js');
 require('./fancybox/jquery.fancybox-media.js');
+require('./splash/ngAutocomplete.js');
 
 // Instantiate our app instance and add ngRoute as a dependecy via
 // the 'angular-route' npm module. (ngRoute === angular-route)
