@@ -49,9 +49,6 @@
         <a href="{{ movie.movie_large_image_url }}" target="_new" class="float-image"><img src="{{ movie.movie_image_url }}" /></a>
           <p class="summary fade" dd-text-collapse dd-text-collapse-max-length="120" dd-text-collapse-text="{{ movie.movie_summary }}">
           </p>
-          <p>
-            <a ng-href="https://www.youtube.com/watch?v={{ movie.movie_shortlink }}" class="fancybox-media" target="_new">View Trailer</a>
-          </p>
         </div>
 
         <table>
@@ -63,20 +60,23 @@
               {{ movie.movie_release_date | date:'MMM d, yyyy' }}
             </td>
           </tr>
-          <tr>
+          <!-- <tr>
             <td>
               <strong>Genre</strong>
             </td>
             <td>
               {{ movie.movie_genres }}
             </td>
-          </tr>
+          </tr> -->
           <tr>
             <td>
-              <strong>Rating</strong>
+              <strong>Trailer</strong>
             </td>
             <td>
-              {{ movie.movie_rating }}
+              <!-- {{ movie.movie_rating }} -->
+              <p>
+                <a ng-href="https://www.youtube.com/watch?v={{ movie.movie_shortlink }}" class="fancybox-media" target="_new">View Trailer</a>
+              </p>
             </td>
           </tr>
         </table>
@@ -117,14 +117,14 @@
               {{ restaurant.restaurant_street_address }} {{ restaurant.restaurant_city }}, {{ restaurant.restaurant_zip }}
             </td>
           </tr>
-          <tr>
+<!--           <tr>
             <td>
               <strong>Serving</strong>
             </td>
             <td>
               {{ restaurant.restaurant_cuisines }}
             </td>
-          </tr>
+          </tr> -->
         </table>
       </div>
     </div>
