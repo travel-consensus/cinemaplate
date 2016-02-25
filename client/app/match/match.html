@@ -14,7 +14,7 @@
   <div class='match-info-bar u-cf'>
     <div class="row">
 
-      <div class="one-half column header movie-bar animate-show" ng-show="contentLoaded">
+      <div class="one-half column header movie-bar animate-show" ng-show={{movieLockEffect}} >
         <div class="star-rating">
           <span class="star" ng-repeat="star in stars" ng-class="{selected: movie.movie_rating > $index}"><i class="fa fa-star"></i></span>
           <div class="lock">
