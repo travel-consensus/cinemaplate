@@ -65,11 +65,9 @@ routes.get('/api/match/restaurant/:zip', function(request, response) {
 
       console.log('reporting random restaurant result:', result);
       response.send(result.rows[0]);
-    });
-    
+    });   
   })
 })
-
 
 
 //
