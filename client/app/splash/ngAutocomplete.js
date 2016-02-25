@@ -43,13 +43,17 @@ angular.module( "ngAutocomplete", [])
         //reinitializes on every change of the options provided
         var newAutocomplete = function() {
           scope.gPlace = new google.maps.places.Autocomplete(element[0], opts);
+
           google.maps.event.addListener(scope.gPlace, 'place_changed', function() {
-            scope.$apply(function() {
-//              if (scope.details) {
-                scope.details = scope.gPlace.getPlace();
-//              }
-              scope.ngAutocomplete = element.val();
-            });
+            var extractedZip;
+            var addrComponents = scope.gPlace.getPlace().address_components;
+            addrComponents.forEach(function(addrCmpnt) {
+              if (addrCmpnt.types[0] === 'postal_code')
+                extractedZip = addrCmpnt.short_name
+            })
+
+            var autocompleteInput = angular.element('#autocomplete')
+            autocompleteInput.scope().zip = String(extractedZip);
           })
         }
         newAutocomplete()
@@ -64,6 +68,6 @@ angular.module( "ngAutocomplete", [])
           element[0].value = '';
           scope.ngAutocomplete = element.val();
         }, true);
-      }
+      } // link
     };
   });
