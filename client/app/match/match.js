@@ -79,8 +79,8 @@ angular.module('cinePlate.match', [])
 
                     // create some new html elements to hold the separate info
                     var firstSpan = $compile('<span>' + firstPart + '</span>')(scope);
-                    var secondSpan = $compile('<span ng-if="collapsed">' + secondPart + '</span>')(scope);
-                    var moreIndicatorSpan = $compile('<span ng-if="!collapsed">... </span>')(scope);
+                    var secondSpan = $compile('<span ng-if="collapsed" class="test">' + secondPart + '</span>')(scope);
+                    var moreIndicatorSpan = $compile('<span ng-if="!collapsed">... </span><br/>')(scope);
                     var lineBreak = $compile('<br ng-if="collapsed">')(scope);
                     var toggleButton = $compile('<span class="collapse-text-toggle" ng-click="toggle()">{{collapsed ? "\nRead less...\n" : "\nRead more...\n"}}</span>')(scope);
 
@@ -100,6 +100,5 @@ angular.module('cinePlate.match', [])
             });
         }
     };
-}]);
-
+}])
 
