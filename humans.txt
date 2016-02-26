@@ -9,6 +9,14 @@
     Justin Seiter -- Scrum Master
     TJ Martin -- Development
 
+#LEGACY
+	
+	Amberley Romo - Scrum Master
+	Chris Nguyen - Development
+	Jonathan Krone - Development
+	Kamran Varahramyan - Product Manager
+	Zack Fullerton - Development
+
 # THANKS
 
     Gilbert for node-catapult and Forbes Lindesay for browserify-middleware! Both available on Github.
@@ -17,4 +25,9 @@
 
     SCSS, HTML5, Normalize.css, Skeleton
     PostgreSQL, Express, Angular, Node
-    Travis CI, Supertest
+    Travis CI, Supertest 
+
+    Fancybox, Google Maps Autocomplete, 
+    IP-API
+
+    dd-text-collapsed: Copyright (c) 2014 Dimitris Doukas via MIT License
