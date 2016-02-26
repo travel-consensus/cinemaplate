@@ -82,7 +82,7 @@
   overflow: hidden;
   width: 100%;
   position: relative;
-  padding: 2em 0;
+  padding: 1.5rem 0;
   box-shadow: 0 3px 20px rgba(0, 0,0, 0.6);
   border-bottom: 1px solid #000;
   z-index: 2;
@@ -90,7 +90,7 @@
   .header {
     h2 {
       margin: 0;
-      font-size: 2.4rem;
+      font-size: 4rem;
       a {
         color: $secondary_accent;
         border: none;
@@ -104,6 +104,7 @@
     li {
       display: inline;
       margin-right: 0.2em;
+      font-size: 2rem;
       &:after {
         content: ','
       }
@@ -252,4 +253,23 @@ svg#unlocked, svg#locked {
   margin-left: -3%;
   margin-top: 1%;
   outline: none;
+}
+
+.movie-title,
+.restaurant-title {
+  text-align: center;
+  
+  font-size: 4rem;
+  font-weight: 400;
+}
+
+.movie-genre,
+.restaurant-genre {
+  text-align: center;
+
+  font-weight: 400;
+}
+
+.movie-locker {
+  transform: translate(450px);
 }
