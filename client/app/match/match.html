@@ -69,29 +69,26 @@
         <table>
           <tr>
             <td>
+              <strong>Trailer</strong>
+            </td>
+            <td>
+              <a ng-href="https://www.youtube.com/watch?v={{ movie.movie_shortlink }}" class="fancybox-media" target="_new">View Trailer</a>
+            </td>
+          </tr>
+          <tr>
+            <td>
               <strong>Release Date</strong>
             </td>
             <td>
               {{ movie.movie_release_date | date:'MMM d, yyyy' }}
             </td>
           </tr>
-          <!-- <tr>
-            <td>
-              <strong>Genre</strong>
-            </td>
-            <td>
-              {{ movie.movie_genres }}
-            </td>
-          </tr> -->
           <tr>
             <td>
-              <strong>Trailer</strong>
+              <strong>Rating</strong>
             </td>
             <td>
-              <!-- {{ movie.movie_rating }} -->
-              <p>
-                <a ng-href="https://www.youtube.com/watch?v={{ movie.movie_shortlink }}" class="fancybox-media" target="_new">View Trailer</a>
-              </p>
+              {{ movie.movie_rating }}
             </td>
           </tr>
         </table>
@@ -109,13 +106,18 @@
           <p class="summary fade fade-restaurant">
             {{ restaurant.restaurant_description }}
           </p>
-          <p>
-            <a href="{{ restaurant.restaurant_url }}" class="iframe" target="_new">See Menu</a>
-          </p>
         </div>
 
         <!-- Food Cuisine and contact info-->
         <table>
+          <tr>
+            <td>
+              <strong>Menu</strong>
+            </td>
+            <td>
+              <a href="{{ restaurant.restaurant_url }}" class="iframe" target="_new">See Menu</a>
+            </td>
+          </tr>
           <tr>
             <td>
               <strong>Phone</strong>

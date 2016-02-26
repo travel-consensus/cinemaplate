@@ -82,7 +82,7 @@ angular.module('cinePlate.match', [])
                     var secondSpan = $compile('<span ng-if="collapsed">' + secondPart + '</span>')(scope);
                     var moreIndicatorSpan = $compile('<span ng-if="!collapsed">... </span>')(scope);
                     var lineBreak = $compile('<br ng-if="collapsed">')(scope);
-                    var toggleButton = $compile('<span class="collapse-text-toggle" ng-click="toggle()">{{collapsed ? "less" : "\nClick for more"}}</span>')(scope);
+                    var toggleButton = $compile('<span class="collapse-text-toggle" ng-click="toggle()">{{collapsed ? "\nRead less...\n" : "\nRead more...\n"}}</span>')(scope);
 
                     // remove the current contents of the element
                     // and add the new ones we created
