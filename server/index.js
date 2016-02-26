@@ -71,50 +71,63 @@ var Restaurants = require('../db/restaurantModel');
   })
 }) */
 
-
 //
 // Match endpoint to match movie genres with cuisines
 //
 routes.get('/api/match/:zip', function(req, res) {
   var zip = req.params.zip;
+  var slimZip = zip.slice(0,3);
 
-  // function to query db and return results
-  var firstMatch = function() {
-    var combinedResult = {};
-    var pgClient = new pg.Client(pgConConfig);
-    var restaurantQuery = pgClient.query("SELECT * FROM restaurants WHERE restaurant_zip LIKE '" + zip + "%' order by random() limit 1", function(err, result){
-      return result;
-    });
-    restaurantQuery.on('end', function(result) {
+  // Query database
+  var combinedResult = {};
+  var needRestaurants;
+  var pgClient = new pg.Client(pgConConfig);
+  pgClient.connect();
+
+  // Check if db has restaurants for this Zip or needs restaurant query
+  pgClient.query("SELECT * FROM restaurants WHERE restaurant_zip LIKE '" + slimZip + "%' order by random() limit 1", function(err, result) {
+    if (result.rowCount > 0) { 
+      needRestaurants = false 
+    } else { 
+      needRestaurants = true 
+    }
+    // When db has restaurants for this Zip then getMatch of movie & restaurant
+    if (needRestaurants) {
+      Restaurants.addRestaurantsForZip(pgConConfig, zip)
+      .then(function() {
+        setTimeout(getMatch, 500)
+      })
+    } else {
+      getMatch()
+    }
+  });
+
+
+  // Function to query database for a restaurant and a movie
+  function getMatch() {
+    // var restaurantQuery = 
+    pgClient.query("SELECT * FROM restaurants WHERE restaurant_zip LIKE '" + slimZip + "%' order by random() limit 1", function(err, result){
+    return result;
+    })
+    // restaurantQuery
+    .on('end', function(result) {
       combinedResult.restaurant = result.rows[0];
     });
-    var movieQuery = pgClient.query("SELECT * FROM movies order by random() limit 1", function(err, result){
+    // var movieQuery = 
+    pgClient.query("SELECT * FROM movies order by random() limit 1", function(err, result){
       return result;
-    });
-    movieQuery.on('end', function(result) {
+    })
+    // movieQuery
+    .on('end', function(result) {
       combinedResult.movie = result.rows[0];
       res.send(combinedResult)
     });
     pgClient.on('drain', function() {
       pgClient.end();
     });
-    pgClient.connect();
   }
-  // Check if zip is in the database. If not, addRestaurants. If so, go ahead with restaurant query.
 
-
-
-
-  // Get first 3 zip digits for SQL "like" query.
-  var slimZip = zip.slice(0,3);
-
-  // Add restaurants for the submitted zip code to the database.
-  // This is async with querying of restaurants, probably won't
-  // populate restaurants before first query for zipcode
-  Restaurants.addRestaurantsForZip(pgConConfig, zip)
-  .then(firstMatch)
 });
-
 
 
 //
