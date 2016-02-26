@@ -11,7 +11,7 @@
 
 #LEGACY
 	
-	Amberly Romo - Scrum Master
+	Amberley Romo - Scrum Master
 	Chris Nguyen - Development
 	Jonathan Krone - Development
 	Kamran Varahramyan - Product Manager
