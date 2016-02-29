@@ -270,3 +270,15 @@ svg#unlocked-movie, svg#locked-movie {
   float:right;
   outline: none;
 }
+
+svg.line1 {
+  position: absolute;
+  margin: -7% 0 0 587px;
+  width: 55px;
+}
+
+svg.line2 {
+  position: absolute;
+  margin: -4% 0 0 49%;
+  width: 60px;
+}

@@ -35,7 +35,7 @@ angular.module('cinePlate.match', [])
   $scope.generateMatch = function () {
     $scope.contentLoaded = false;
     $scope.collapsed = false;
-    $scope.isActive = !$scope.isActive;
+    $scope.isActive = !$scope.isActive; // toggle spin action
     Matches.generateMatch($routeParams.zip)
       .then(function (response) {
         console.log(response)
@@ -78,7 +78,7 @@ angular.module('cinePlate.match', [])
                     var secondPart = String(text).substring(maxLength, text.length);
 
                     // create some new html elements to hold the separate info
-                    var firstSpan = $compile('<span>' + firstPart + '</span>')(scope);
+                    var firstSpan = $compile('<span class="summary fade">' + firstPart + '</span>')(scope);
                     var secondSpan = $compile('<span ng-if="collapsed" class="test">' + secondPart + '</span>')(scope);
                     var moreIndicatorSpan = $compile('<span ng-if="!collapsed">... </span><br/>')(scope);
                     var lineBreak = $compile('<br ng-if="collapsed">')(scope);
